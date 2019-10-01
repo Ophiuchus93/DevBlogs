@@ -34,7 +34,7 @@ class Login extends React.Component {
           />
           <Form.Input
             label="Password"
-            autofocus
+            autoFocus
             required
             name="password"
             value={password}
