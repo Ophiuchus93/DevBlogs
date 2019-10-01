@@ -3,16 +3,16 @@ import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from "semantic-ui-react"
 
 class Register extends React.Component {
-  state = { email: "", password: "", passwordConfirmation: "", };
+  state = { firstName: "",lastName:"", userName: "", cohort: "", email: "", password: "", passwordConfirmation: "", };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password, passwordConfirmation } = this.state;
+    const { firstName, lastName, userName, cohort, email, password, passwordConfirmation } = this.state;
     const { auth: { handleRegister, }, history } = this.props;
 
     if (password === passwordConfirmation)
 
-      handleRegister({ email, password, passwordConfirmation, }, history);
+      handleRegister({ firstName, lastName, userName, cohort, email, password, passwordConfirmation, }, history);
     else
       alert("Passwords Do Not Match")
   }
@@ -23,16 +23,47 @@ class Register extends React.Component {
   }
 
   render() {
-    const { email, password, passwordConfirmation, } = this.state;
+    const { firstName, lastName, userName, cohort, email, password, passwordConfirmation, } = this.state;
 
     return (
       <Segment>
         <Header as="h1" textAlign="center">Register</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input 
-            label="Email"
+            label="First Name"
             required
             autoFocus
+            name="firstName"
+            value={firstName}
+            placeholder="First Name"
+            onChange={this.handleChange}
+          />
+          <Form.Input 
+            label="Last Name"
+            required
+            name="lastName"
+            value={lastName}
+            placeholder="Last Name"
+            onChange={this.handleChange}
+          />
+          <Form.Input 
+            label="Username"
+            required
+            name="userName"
+            value={userName}
+            placeholder="Username"
+            onChange={this.handleChange}
+          />
+          <Form.Input 
+            label="Cohort (optional)"
+            name="cohort"
+            value={cohort}
+            placeholder="Cohort: Season and Year (e.g, Fall 2019)"
+            onChange={this.handleChange}
+          />
+          <Form.Input 
+            label="Email"
+            required
             name="email"
             value={email}
             placeholder="Email Address"

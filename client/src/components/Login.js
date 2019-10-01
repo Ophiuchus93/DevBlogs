@@ -25,7 +25,7 @@ class Login extends React.Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
             label="Email"
-            autofocus
+            autoFocus
             required
             name="email"
             value={email}
