@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: User.current_user.id
+    render json: User.all
   end
 
   def show
