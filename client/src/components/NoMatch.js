@@ -11,7 +11,9 @@ const NoMatch = () => (
      But Dinosaurs Do!
    </Header>
    <Header as="h1" textAlign="center">
-         <span> 🦖 🦕 🤯 </span>
+    <span role="img" aria-label="t-rex">🦖</span>
+    <span role="img" aria-label="sauropod">🦕 </span>
+    <span role="img" aria-label="exploding_head">🤯</span>
      <br />
      <Link to="/">Home</Link>
    </Header>

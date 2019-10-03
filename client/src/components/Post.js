@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Header, Segment, } from "aemantic-ui-react";
+import { Header, Segment, Button, } from "semantic-ui-react";
 
 class Post extends React.Component {
   state ={ post: {}, };
@@ -23,6 +23,7 @@ class Post extends React.Component {
         <br />
         <Segment>
           <p>{ body }</p>
+          
         </Segment>
       </div>
     )
