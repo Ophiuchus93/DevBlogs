@@ -12,17 +12,22 @@ class Api::PostsController < ApplicationController
   #   render json: @post
   # end
 
-  # def create
-  #   post = post.new(post_params)
-  # end
+  def create
+    post = current_user.posts.new(post_params)
+    if post.save 
+      render json: post
+    else
+      render json: { errors: post.errors }, status: 422
+    end
+  end
 
-  # def update
-  #    if @post.update(post_params)
-  #     render json: @post
-  #    else
-  #     render json: @post.error
-  #    end
-  # end
+  def update
+     if @post.update(post_params)
+      render json: @post
+     else
+      render json: @post.errors, status: 422
+     end
+  end
 
   def destroy
     @post.destroy
