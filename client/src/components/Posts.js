@@ -17,7 +17,7 @@ class Posts extends React.Component {
   renderPosts = () => {
     const { posts } = this.state;
     return posts.map( post => (
-      <Segment>
+      <Segment key={post.id}>
       <Card>
         <Card.Content>
         <Card.Header as="h3">{post.title}</Card.Header>
