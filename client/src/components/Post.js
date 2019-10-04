@@ -1,32 +1,38 @@
 import React from "react";
-import axios from "axios";
-import { Header, Segment, } from "aemantic-ui-react";
+import { Link, } from "react-router-dom";
+import { Card, Button, Icon, Segment } from "semantic-ui-react";
 
-class Post extends React.Component {
-  state ={ post: {}, };
+const Post = (props) => {
+  return (
+    <Segment>
+        <Card>
+          <Card.Content>
+            <Card.Header as="h2" textAlign="right">{props.title}</Card.Header>
+            <hr/>
+            <Card.Meta>{props.body}</Card.Meta>
+            <br/>
+            <br/>
+        <Button
+          icon basic
+          as={Link} to={"/form"}
+          color="yellow"
+          size="medium"
+          >
+          <Icon name="pencil alternate" />
+          </Button>
+        <Button
+        icon basic
+        color="red"
+        size="medium"
+        onClick={() => props.deletePost(props.id)}
+        >
+        <Icon name="x" />
+        </Button>
+          </Card.Content>
+        </Card>
+      </Segment>
 
-  componentDidMount() {
-    axios.get(`/api/posts/${this.props.match.params.id}`)
-    .then ( res => {
-      this.setState({ post: res.data });
-    })
-  }
-
-
-  render() {
-    const { title, body, } = this.state.post
-    return(
-      <div>
-        <Segment>
-          <Header as="h1">{ title }</Header>
-        </Segment>
-        <br />
-        <Segment>
-          <p>{ body }</p>
-        </Segment>
-      </div>
-    )
-  }
+  )
 }
 
 export default Post;
