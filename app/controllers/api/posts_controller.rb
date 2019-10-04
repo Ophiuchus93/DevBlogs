@@ -2,7 +2,7 @@ class Api::PostsController < ApplicationController
   # include DeviseTokenAuth::Concerns::SetUserByToken
   before_action :authenticate_user!
   # before_action :set_user, only: [:index]
-  # before_action :set_post, only: [:show, :update, :destroy]
+  before_action :set_post, only: [:show, :update, :destroy]
 
   def index
     render json: Post.all
@@ -29,9 +29,9 @@ class Api::PostsController < ApplicationController
      end
   end
 
-  # def destroy
-  #   @post.destroy
-  # end
+  def destroy
+    @post.destroy
+  end
 
   private
 
