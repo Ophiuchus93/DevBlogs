@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Post from "./Post";
+import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
 import { Card, Header, } from "semantic-ui-react";
 
@@ -28,7 +28,7 @@ class Posts extends React.Component {
 
     if (posts.length <= 0)
       return <h2>No Posts To See</h2>
-      return posts.map( post => <Post key={post.id} {...post}  deletePost={this.deletePost} /> )
+      return posts.map( post => <Post key={post.id} {...post} deletePost={this.deletePost} />)
   }
 
   render() {

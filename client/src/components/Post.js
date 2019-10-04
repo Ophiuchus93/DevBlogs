@@ -1,10 +1,18 @@
 import React from "react";
 import { Link, } from "react-router-dom";
+<<<<<<< HEAD
 import {  Button, Card, Icon, Segment,  } from "semantic-ui-react";
 
 const Post = (props) => {
   return (
     <Segment key={props.id}>
+=======
+import { Card, Button, Icon, Segment } from "semantic-ui-react";
+
+const Post = (props) => {
+  return (
+    <Segment>
+>>>>>>> 0c997e248c676ef773e25cc72fe8856c3fcf0c0e
         <Card>
           <Card.Content>
             <Card.Header as="h2" textAlign="right">{props.title}</Card.Header>
@@ -31,6 +39,10 @@ const Post = (props) => {
           </Card.Content>
         </Card>
       </Segment>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0c997e248c676ef773e25cc72fe8856c3fcf0c0e
   )
 }
 
