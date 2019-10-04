@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { Link, } from "react-router-dom";
+import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
-import { Button, Card, Grid, Header, Segment } from "semantic-ui-react";
+import { Card, Header, } from "semantic-ui-react";
 
 class Posts extends React.Component {
   state = { posts: [], currentUser: {}, };
@@ -15,26 +15,20 @@ class Posts extends React.Component {
       })
   }
 
-  renderPosts = (id) => {
+  deletePost = (id) => {
+    axios.delete(`/api/users/:user_id/posts/${id}`)
+      .then( response => {
+        const { posts, } = this.state;
+        this.setState({ posts: posts.filter(p => p.id !== id), })
+      })
+  }
+
+  renderPosts = () => {
     const { posts } = this.state;
 
     if (posts.length <= 0)
       return <h2>No Posts To See</h2>
-    return posts.map(post => (
-      <Segment key={post.id}>
-        <Card>
-          <Card.Content>
-            <Card.Header as="h3">{post.title}</Card.Header>
-            {post.body}
-          </Card.Content>
-        </Card>
-        <Button
-          as={Link} to={"/new"}
-          color="yellow">
-          Edit
-          </Button>
-      </Segment>
-    ))
+      return posts.map( post => <Post key={post.id} {...post} deletePost={this.deletePost} />)
   }
 
   render() {
