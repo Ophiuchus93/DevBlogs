@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
-import { Card, Header, } from "semantic-ui-react";
+import { Link, } from "react-router-dom"
+import { Button, Card, Header, } from "semantic-ui-react";
 
 class Posts extends React.Component {
   state = { posts: [], currentUser: {}, };
@@ -37,12 +38,18 @@ class Posts extends React.Component {
   }
 
   render() {
+    const { posts, } = this.state;
     return (
       <>
         <Header as="h1">My Posts</Header>
         <br />
         <Card>
+          <Card.Content>
           {this.renderPosts()}
+          </Card.Content>
+          <Card.Content extra>
+            <Button as={Link} color="green" to={`/api/users/${this.state.currentUser.id}/posts/${this.state.id}`}>View Post</Button>
+          </Card.Content>
         </Card>
       </>
     )
