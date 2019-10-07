@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   # include DeviseTokenAuth::Concerns::SetUserByToken
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:show, :update, :destroy, :create]
   # before_action :set_user, only: [:index]
   before_action :set_post, only: [:show, :update, :destroy]
 
