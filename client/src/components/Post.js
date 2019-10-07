@@ -3,6 +3,7 @@ import { Link, } from "react-router-dom";
 import { Card, Button, Icon, Segment } from "semantic-ui-react";
 
 const Post = (props) => {
+
   return (
     <Segment>
         <Card>
@@ -14,7 +15,7 @@ const Post = (props) => {
             <br/>
         <Button
           icon basic
-          as={Link} to={"/form"}
+          as={Link} to={`/api/users/${props.user_id}/posts/${props.id}`}
           color="yellow"
           size="medium"
           >
