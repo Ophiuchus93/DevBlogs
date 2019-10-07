@@ -18,9 +18,10 @@ const App = () => (
     <FetchUser>
       <Container>
         <Switch>
-          <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/posts" component={Posts} /> 
+          <Route exact path="/" component={Home} />
+          <Route exact path="/posts" component={Posts} /> 
           <ProtectedRoute exact path="/form" component={PostForm} />
+          <ProtectedRoute exact path="/api/users/:user_id/posts/:id" component={PostForm} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route component={NoMatch} />

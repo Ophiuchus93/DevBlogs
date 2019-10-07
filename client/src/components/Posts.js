@@ -28,7 +28,12 @@ class Posts extends React.Component {
 
     if (posts.length <= 0)
       return <h2>No Posts To See</h2>
-      return posts.map( post => <Post key={post.id} {...post} deletePost={this.deletePost} />)
+      return posts.map( post => 
+      <Post key={post.id} 
+         {...post } 
+          currentUser
+          deletePost={this.deletePost} 
+      />)
   }
 
   render() {
