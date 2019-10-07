@@ -43,7 +43,7 @@ class Login extends React.Component {
             onChange={this.handleChange}
           />
           <Segment>
-            <Button primary type="submit">Submit</Button>
+            <Button primary type="submit">Log-In</Button>
           </Segment>
         </Form>
       </Segment>
