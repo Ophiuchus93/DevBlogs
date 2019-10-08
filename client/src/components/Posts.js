@@ -10,7 +10,7 @@ class Posts extends React.Component {
 
   componentDidMount() {
     this.setState({ currentUser: this.context.user })
-    axios.get(`/api/posts`)
+    axios.get("/api/posts")
       .then(res => {
         this.setState({ posts: res.data });
       })

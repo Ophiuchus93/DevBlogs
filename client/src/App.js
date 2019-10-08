@@ -23,7 +23,7 @@ const App = () => (
           <ProtectedRoute exact path="/api/posts/:id" component={PostForm} />
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={Posts} /> 
-          <Route exaxt path="/posts/:id" component={PostView} />
+          <Route exact path="/posts/:id" component={PostView} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route component={NoMatch} />
