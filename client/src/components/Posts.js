@@ -8,15 +8,14 @@ class Posts extends React.Component {
   state = { posts: [], currentUser: {}, };
 
   componentDidMount() {
-    this.setState({ currentUser: this.context.user })
-    axios.get(`/api/users/${this.state.currentUser.id}/posts`)
+    axios.get(`/api/posts`)
       .then(res => {
         this.setState({ posts: res.data });
       })
   }
 
   deletePost = (id) => {
-    axios.delete(`/api/users/:user_id/posts/${id}`)
+    axios.delete(`/api/posts/${id}`)
       .then( response => {
         const { posts, } = this.state;
         this.setState({ posts: posts.filter(p => p.id !== id), })

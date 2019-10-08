@@ -15,7 +15,7 @@ const Post = (props) => {
             <br/>
         <Button
           icon basic
-          as={Link} to={`/api/users/${props.user_id}/posts/${props.id}`}
+          as={Link} to={`/api/posts/${props.id}`}
           color="yellow"
           size="medium"
           >
