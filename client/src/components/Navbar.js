@@ -1,7 +1,8 @@
 import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
-import { Menu, } from 'semantic-ui-react'
+import { Button, Container, Image, Menu, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
+import Beaker from "../images/Beaker.png";
 
 class Navbar extends React.Component {
   
@@ -11,21 +12,28 @@ class Navbar extends React.Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
-          <Menu.Item
+          <Button 
+            id="logout"
             name='logout'
+            color="blue"
             onClick={ () => handleLogout(this.props.history) }
-          />
+          >
+            Logout
+          </Button>
         </Menu.Menu>
       )
     } else {
       return (
         <Menu.Menu position='right'>
           <Link to='/login'>
-            <Menu.Item
+            <Button
               id='login'
               name='login'
+              color="blue"
               active={location.pathname === '/login'}
-            />
+            >
+              Login
+            </Button>
           </Link>
           <Link to='/register'>
             <Menu.Item
@@ -41,14 +49,11 @@ class Navbar extends React.Component {
   
   render() {
     return (
-      <div>
+      <Container>
         <Menu pointing secondary>
-          <Link to='/'>
-            <Menu.Item
-              name='home'
-              id='home'
-              active={this.props.location.pathname === '/'}
-            />
+
+          <Link to="/">
+            <Image style={{width: "65px", height: "75px", paddingTop: "8px",}} src={Beaker} />
           </Link>
           <Link to='/posts'>
             <Menu.Item
@@ -59,15 +64,14 @@ class Navbar extends React.Component {
           </Link>
           <Link to='/form'>
             <Menu.Item
-              name='form'
-              id='form'
+              name='Add Post'
+              id='add post'
               active={this.props.location.pathname === '/form'}
             />
           </Link>
             { this.rightNavItems() }
         </Menu>
-        
-      </div>
+      </Container>
     )
   }
 }

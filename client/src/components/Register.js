@@ -10,6 +10,8 @@ class Register extends React.Component {
     const { firstName, lastName, userName, cohort, email, password, passwordConfirmation } = this.state;
     const { auth: { handleRegister, }, history } = this.props;
 
+    if (password.length < 6)
+      alert("Password Must Container 6 Characters or More")
     if (password === passwordConfirmation)
 
       handleRegister({ firstName, lastName, userName, cohort, email, password, passwordConfirmation, }, history);

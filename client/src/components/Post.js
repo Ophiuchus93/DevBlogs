@@ -32,7 +32,6 @@ const Post = (props) => {
           </Card.Content>
         </Card>
       </Segment>
-
   )
 }
 
