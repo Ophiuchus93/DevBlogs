@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-import { Header, Card, } from "semantic-ui-react";
+import { Card, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
   state = { posts: [], };
@@ -29,6 +29,10 @@ class Home extends React.Component {
       <>
         <Header as="h1"></Header>
         <br />
+        <Input
+          placeholder="Search..." 
+          icon="search" 
+          />
         <Card>
           {this.renderPosts()}
         </Card>
