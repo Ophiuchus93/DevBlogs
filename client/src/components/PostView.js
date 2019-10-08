@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
-import { Segment, Header, Button, Card } from "semantic-ui-react"
+import Post from "./Post"
+import { Segment, Header, } from "semantic-ui-react"
 // import { Link } from "react-router-dom"
 
 class PostView extends React.Component {
-  state={ post: {}}
+  state={ post: {}, }
 
   componentDidMount() {
-    axios.get(`/api/users/${this.props.match.params.user_id}/posts/this.props.match.params.id`)
+    axios.get(`/posts/${this.props.match.params.id}`)
     .then ( res => {
       this.setState({ post: res.data })
     })
@@ -15,7 +16,7 @@ class PostView extends React.Component {
   }
 
   render() {
-    const { title, body, }
+    const { title, body, } = this.state.post;
     return(
         <div>
           <Segment>
