@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Post from "./Post"
 import { Segment, Header, } from "semantic-ui-react"
-// import { Link } from "react-router-dom"
 
 class PostView extends React.Component {
   state={ post: {}, }

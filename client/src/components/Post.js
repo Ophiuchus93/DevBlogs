@@ -38,14 +38,6 @@ const Post = (props) => {
           >
             <Icon name="x" />
           </Button>
-        <Button
-        icon basic
-        color="red"
-        size="medium"
-        onClick={() => props.deletePost(props.id)}
-        >
-        <Icon name="x" />
-        </Button>
           </Card.Content>
         </Card>
       </Segment>
