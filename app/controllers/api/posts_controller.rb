@@ -8,9 +8,9 @@ class Api::PostsController < ApplicationController
     render json: Post.all
   end
 
-  # def show
-  #   render json: @post
-  # end
+  def show
+    render json: @post
+  end
 
   def create
     post = current_user.posts.new(post_params)
