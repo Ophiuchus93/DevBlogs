@@ -2,14 +2,14 @@ import React from "react";
 import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
+// import { Link, } from "react-router-dom"
 import { Card, Header, } from "semantic-ui-react";
 
 class Posts extends React.Component {
   state = { posts: [], currentUser: {}, };
 
   componentDidMount() {
-    this.setState({ currentUser: this.context.user })
-    axios.get("/api/posts")
+    axios.get(`/api/posts`)
       .then(res => {
         this.setState({ posts: res.data });
       })
@@ -34,6 +34,7 @@ class Posts extends React.Component {
           currentUser
           deletePost={this.deletePost} 
       />)
+      
   }
 
   render() {
@@ -42,7 +43,10 @@ class Posts extends React.Component {
         <Header as="h1">My Posts</Header>
         <br />
         <Card>
+          <Card.Content>
           {this.renderPosts()}
+          </Card.Content>
+
         </Card>
       </>
     )

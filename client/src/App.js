@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Posts from "./components/Posts";
 import PostForm from "./components/PostForm";
+import PostView from "./components/PostView";
 import FetchUser from "./components/FetchUser";
 import ProtectedRoute from './components/ProtectedRoute';
 import { Switch, Route, } from "react-router-dom";
@@ -19,10 +20,11 @@ const App = () => (
     <FetchUser>
       <Container>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/posts" component={Posts} /> 
           <ProtectedRoute exact path="/form" component={PostForm} />
           <ProtectedRoute exact path="/api/posts/:id" component={PostForm} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/posts" component={Posts} /> 
+          <Route exact path="/posts/:id" component={PostView} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route component={NoMatch} />

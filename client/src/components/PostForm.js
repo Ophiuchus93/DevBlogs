@@ -7,7 +7,7 @@ class PostForm extends React.Component {
 
   componentDidMount() {
     if(this.props.match.params.id){
-      axios.get(`/api/users/:user_id/posts/${this.props.match.params.id}`)
+      axios.get(`/api/posts/${this.props.match.params.id}`)
       .then(res => {
         const { title, body } = res.data
         this.setState({title, body})
@@ -25,7 +25,7 @@ class PostForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.match.params.id) {
-      axios.put(`/api/users/${this.props.match.params.user_id}/posts/${this.props.match.params.id}`, this.state)
+      axios.put(`/api/posts/${this.props.match.params.id}`, this.state)
       .then(res => {
         this.props.history.push("/posts")
       })
@@ -33,7 +33,7 @@ class PostForm extends React.Component {
         console.log(err)
       })
     } else {
-      axios.post("/api/users/:user_id/posts", this.state)
+      axios.post("/api/posts", this.state)
       .then( res => {
         this.props.history.push("/posts")
       })
