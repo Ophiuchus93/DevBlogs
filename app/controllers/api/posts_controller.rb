@@ -32,6 +32,7 @@ class Api::PostsController < ApplicationController
   def destroy
     @post.destroy
   end
+  
 
   private
 

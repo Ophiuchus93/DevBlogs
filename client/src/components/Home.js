@@ -1,46 +1,48 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-// import Posts from "./Posts";
-import { Card, Header, Input, } from "semantic-ui-react";
+import { Container, Grid, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
-  state = { posts: [], visible: [], search: "", };
+  state = { posts: [], search: "",};
 
   componentDidMount() {
     axios.get("/api/posts")
       .then(res => {
-        this.setState({ posts: res.data, visible: res.data, });
+        this.setState({ posts: res.data, });
       })
       .catch( error => {
         console.log(error)
       })
   };
 
-  handleChange = (e) => {
-    this.setState({ search: e.target.value }, () => {
-      this.updateVisible()
-    });
+  deletePost = (id) => {
+    axios.delete(`/api/posts/${id}`)
+      .then( response => {
+        const { posts, } = this.state;
+        this.setState({ posts: posts.filter(p => p.id !== id), })
+      })
   }
 
-  updateVisible = () => {
-    const { search, posts } = this.state;
-    if (search.length === 0)
-      this.setState({ visible: posts });
-    else if (search.length > 1) {
-      axios.get(`/api/search?term=${search}`)
-        .then( res => this.setState({ visible: res.data }) )
-    }
-  }
 
+  updateSearch(event) {
+    this.setState({search: event.target.value.substr(0, 20)})
+  }
+  
   renderPosts = () => {
     const {posts} = this.state;
+    let filteredPosts = posts.filter(
+      (post) => {
+        return post.title.toLowerCase().indexOf(
+          this.state.search.toLowerCase()) !== -1;
+      }
+    );
 
     if(posts.length <= 0)
       return <h2>Currently no posts...</h2>
-      return posts.map( post => <Post key={post.id} {...post} />)
-
+      return filteredPosts.map( post => <Post key={post.id} {...post} deletePost={this.deletePost}/>)
   };
+
   render() {
     return (
       <>
@@ -48,14 +50,19 @@ class Home extends React.Component {
         <br />
         <Input
           value={this.state.search}
-          onChange={this.handleChange}
-          icon={{ name: "search", circular: true}}
+          onChange={this.updateSearch.bind(this)}
+          icon={{ name: "search"}}
           placeholder="Search..." 
           />
-          {/* <Posts posts={this.state.visible} /> */}
-        <Card>
-          {this.renderPosts()}
-        </Card>
+        <Container>
+          <Grid 
+            columns={3} 
+            padded="vertically"
+            divided
+          >
+            {this.renderPosts()}
+          </Grid>
+        </Container>
       </>
     )
   }
