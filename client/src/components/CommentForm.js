@@ -15,7 +15,7 @@
 //     this.setState({ user_name: this.props.auth.user.user_name })
 //     this.setState({ user_id: this.props.auth.user.id })
 //   }
-//   handleChange = (e) => {
+//   handleChange = (e) => {     
 //     const { name, value, } = e.target;
 //     this.setState({ [name]: value, })
 //   }
