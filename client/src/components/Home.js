@@ -4,7 +4,7 @@ import Post from "./Post";
 import { Container, Grid, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
-  state = { posts: [], search: "",};
+  state = { posts: [], search: "" };
 
   componentDidMount() {
     axios.get("/api/posts")
@@ -22,12 +22,11 @@ class Home extends React.Component {
         const { posts, } = this.state;
         this.setState({ posts: posts.filter(p => p.id !== id), })
       })
-  }
-
+  };
 
   updateSearch(event) {
-    this.setState({search: event.target.value.substr(0, 20)})
-  }
+    this.setState({ search: event.target.value.substr(0, 20)})
+  };
   
   renderPosts = () => {
     const {posts} = this.state;
@@ -52,23 +51,25 @@ class Home extends React.Component {
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
           icon={{ name: "search"}}
+          style={{width: "400px"}}
+          iconPosition="left"
           placeholder="Search..." 
-          />
-        <Container>
+        />
+        <Container style={{ margin: "10px", padding: "10px"}}>
           <Grid 
+            style={{ paddingLeft: "100px", paddingTop: "30px",}}
             columns={3} 
             padded="vertically"
             divided
+
           >
             {this.renderPosts()}
           </Grid>
         </Container>
       </>
-    )
-  }
+    );
+  };
 };
-
-
 
 export default Home;
 

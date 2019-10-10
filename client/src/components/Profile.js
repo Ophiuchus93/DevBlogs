@@ -1,7 +1,8 @@
 import React from "react";
 import { AuthConsumer, } from "../providers/AuthProvider";
-import Dropzone from "react-dropzone";
-import { Container, Form, Grid, Image, Divider, Header, Button, } from "semantic-ui-react";
+import  Dropzone from "react-dropzone";
+import { Container, Form, Grid, Image, Header, Button, } from "semantic-ui-react";
+
 const defaultImage = 'https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180818343/108180118-user-vector-icon-isolated-on-transparent-background-user-logo-concept.jpg';
 class Profile extends React.Component {
   state = { editing: false, formValues: { name: "", email: "", file: "", }, };

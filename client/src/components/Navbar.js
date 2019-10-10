@@ -2,6 +2,7 @@ import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Container, Image, Menu, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
+import Avatar from "./Avatar";
 import Beaker from "../images/Beaker.png";
 
 class Navbar extends React.Component {
@@ -11,16 +12,18 @@ class Navbar extends React.Component {
     
     if (user) {
       return (
-        <Menu.Menu position='right'>
-          <Button 
-            id="logout"
-            name='logout'
-            color="blue"
-            onClick={ () => handleLogout(this.props.history) }
-          >
-            Logout
-          </Button>
-        </Menu.Menu>
+          <Menu.Menu position='right'>
+            <Link to="/Profile">
+            <Avatar/>
+            </Link>
+              <Button
+                id="logout"
+                name='logout'
+                color="blue"
+                onClick={ () => handleLogout(this.props.history) }
+              >
+              </Button>
+          </Menu.Menu>
       )
     } else {
       return (
