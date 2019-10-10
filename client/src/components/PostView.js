@@ -2,7 +2,7 @@ import React from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import axios from "axios";
-import { Card, Container, Segment, Header, } from "semantic-ui-react";
+import { Container, Segment, Header, } from "semantic-ui-react";
 
 class PostView extends React.Component {
   state = { post: {}, comments: [], }
@@ -13,7 +13,13 @@ class PostView extends React.Component {
         this.setState({ post: res.data })
       })
       .catch(err => console.log(err))
-
+    
+    axios.get(`/api/posts/${this.props.match.params.id}/comments`)
+      .then(res => {
+        this.setState({ comments: res.data })
+      })
+      .catch(err => console.log(err))
+    }
 
   renderComments = () => {
     const { comments } = this.state;
@@ -27,7 +33,7 @@ class PostView extends React.Component {
     const { comments } = this.state
     axios.post(`/api/posts/${this.state.post.id}/comments`, comment)
       .then( res => this.setState({ comments: [...comments ,res.data] }))
-  }
+  };
 
   render() {
     const { title, body, } = this.state.post;
@@ -55,7 +61,7 @@ class PostView extends React.Component {
         </Segment>
       </div>
     );
-  };
+  }
 };
 
 export default PostView;

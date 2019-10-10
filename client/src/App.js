@@ -7,7 +7,6 @@ import Register from "./components/Register";
 import Posts from "./components/Posts";
 import PostForm from "./components/PostForm";
 import PostView from "./components/PostView";
-import Profile from "./components/Profile";
 import FetchUser from "./components/FetchUser";
 import Profile from "./components/Profile";
 import ProtectedRoute from './components/ProtectedRoute';
