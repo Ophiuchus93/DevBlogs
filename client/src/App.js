@@ -9,9 +9,11 @@ import PostForm from "./components/PostForm";
 import PostView from "./components/PostView";
 import Profile from "./components/Profile";
 import FetchUser from "./components/FetchUser";
+import Profile from "./components/Profile";
 import ProtectedRoute from './components/ProtectedRoute';
 import { Switch, Route, } from "react-router-dom";
 import { Container, } from "semantic-ui-react";
+
 
 
 const App = () => (

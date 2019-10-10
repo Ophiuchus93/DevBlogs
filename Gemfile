@@ -10,7 +10,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "devise_token_auth"
 gem 'cloudinary'
 
-
 group :development, :test do
  gem "pry-rails"
  gem 'pry'

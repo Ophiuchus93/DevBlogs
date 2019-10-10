@@ -11,9 +11,11 @@ class Profile extends React.Component {
     const { auth: { user: { firstName, lastName, email, }, }, } = this.props;
     this.setState({ formValues: { firstName, lastName, email, }, });
   };
+
   toggleEdit = () => {
     this.setState({ editing: !this.state.editing });
   };
+
   profileView = () => {
     const { auth: { user, }, } = this.props;
     return (
@@ -22,28 +24,57 @@ class Profile extends React.Component {
           <Image src={user.image || defaultImage} />
         </Grid.Column>
         <Grid.Column width={8}>
-          <Header as="h1">Name: { user.firstName } { user.lastName }</Header>
-          <Header as="h2">Username: {user.userName}</Header>
-          <Header as="h2">Email Address: { user.email }</Header>
+          <Header as="h1">{ user.firstName } { user.lastName }</Header>
+          <Header as="h4">{ user.email }</Header>
         </Grid.Column>
       </>
     );
   };
-  handleChange = (e, { name, value, }) => {
-    this.setState({ formValues: { ...this.state.formValues, [name]: value, }, });
-  };
+
+  // handleChange = (e, { firstName, lastName, value, }) => {
+  //   this.setState({ formValues: { ...this.state.formValues, [firstName]: firstName, lastName, value, }, });
+  // };
+
+  handleChange = (e) => {
+    const { name, value, } = e.target;
+    this.setState({
+      formValues: {
+        ...this.state.formValues,
+        [name]: value,
+      }
+    })
+  }
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const { formValues: { name, email, file, }, } = this.state;
+  //   const { auth: { user, updateUser, }, } = this.props;
+  //   updateUser(user.id, { name, email, file, });
+  //   this.setState({
+  //     editing: false,
+  //     formValues: {
+  //       ...this.state.formValues,
+  //       file: "",
+  //     },
+  //   });
+  // }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { formValues: { firstName, lastName, email, file, }, } = this.state;
     const { auth: { user, updateUser, }, } = this.props;
     updateUser(user.id, { firstName, lastName, email, file, });
-    this.setState({ editing: false, });
+    this.setState({ editing: false, formValues: { ...this.state.formValues, file: '' } });
   };
+
   handleDrop = (files) => {
+    // debugger
     this.setState({ formValues: { ...this.state.formValues, file: files[0], } });
   };
+
   editView = () => {
-    const { formValues: { firstName, lastName, email, }, } = this.state;
+    const { auth: { user }, } = this.props;
+    const { formValues: { firstName, lastName, email, file } } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Grid.Column width={4}>
@@ -61,7 +92,7 @@ class Profile extends React.Component {
                   isDragActive ? 
                     <p>Drop files here...</p>
                   :
-                    <p>Try dropping some files here, or click to select a file</p>
+                    <p>Try dropping a file here, or click to select a file</p>
                 }
               </div>
             )}
@@ -70,15 +101,14 @@ class Profile extends React.Component {
         <Grid.Column width={8}>
           <Form.Input 
             label="First Name"
-            name="First Name"
+            name="firstName"
             value={firstName}
-            autoFocus
             required
             onChange={this.handleChange}
           />
           <Form.Input 
             label="Last Name"
-            name="Last Name"
+            name="lastName"
             value={lastName}
             required
             onChange={this.handleChange}
@@ -91,6 +121,7 @@ class Profile extends React.Component {
             required
             onChange={this.handleChange}
           />
+
           <Form.Button>Update</Form.Button>
         </Grid.Column>
       </Form>

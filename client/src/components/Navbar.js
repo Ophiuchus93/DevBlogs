@@ -4,9 +4,12 @@ import { Button, Container, Image, Menu, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import Beaker from "../images/Beaker.png";
 import Avatar from "./Avatar";
+
 class Navbar extends React.Component {
+
   rightNavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
+
     if (user) {
       return (
         <Menu.Menu position='right'>
@@ -48,6 +51,10 @@ class Navbar extends React.Component {
       )
     }
   }
+
+
+
+
   
   render() {
     return (
