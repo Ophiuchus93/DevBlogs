@@ -1,6 +1,37 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
+<<<<<<< HEAD
+import { Header, Grid, } from "semantic-ui-react";
+class Home extends React.Component {
+ state = { posts: [], };
+ componentDidMount() {
+   axios.get("/api/posts")
+     .then(res => {
+       this.setState({ posts: res.data });
+     })
+     .catch( error => {
+       console.log(error)
+     })
+ };
+ renderPosts = () => {
+   const {posts} = this.state;
+   if(posts.length <= 0)
+     return <h2>Currently no posts...</h2>
+     return posts.map( post => <Post key={post.id} {...post} />)
+ };
+ render() {
+   return (
+     <>
+       <Header as="h1"></Header>
+       <br />
+       <Grid>
+         {this.renderPosts()}
+       </Grid>
+     </>
+   )
+ }
+=======
 import { Container, Grid, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
@@ -66,6 +97,7 @@ class Home extends React.Component {
       </>
     )
   }
+>>>>>>> ff4c9761941da0c54c746168d280afdec7357713
 };
 
 
