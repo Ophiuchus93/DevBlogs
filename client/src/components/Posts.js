@@ -52,5 +52,6 @@ class Posts extends React.Component {
     )
   }
 }
+
 Posts.contextType = AuthContext;
 export default Posts;

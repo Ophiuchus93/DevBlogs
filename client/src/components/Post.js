@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, } from "react-router-dom";
-import { Card, Button, Icon, Segment } from "semantic-ui-react";
+import { Card, Button, Icon, Segment, Image, Grid } from "semantic-ui-react";
 
 const Post = (props) => {
 
@@ -8,7 +8,7 @@ const Post = (props) => {
     <Segment>
       <Card>
         <Card.Content>
-          <Card.Header as="h2" textAlign="right">{props.title}</Card.Header>
+          <Card.Header as="h2" textAlign="left">{props.title}</Card.Header>
           <hr />
           <Card.Meta>{props.body}</Card.Meta>
           <br />

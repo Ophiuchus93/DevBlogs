@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get '/posts/:id', to: 'api/posts#show', as: 'the_one_post'
 
+  namespace :api do 
+    resources :users
+  end
+
   namespace :api do
       resources :posts do
       resources :comments
