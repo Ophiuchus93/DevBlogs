@@ -23,7 +23,8 @@ class Api::CommentsController < ApplicationController
     def destroy
         @comment.destroy
         render json: { message: 'Comment deleted' }
-    end`
+    end
+    
     private
     
     def set_post
