@@ -3,10 +3,10 @@ import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
 // import { Link, } from "react-router-dom"
-import { Card, Header, } from "semantic-ui-react";
+import { Container, Grid, Header, } from "semantic-ui-react";
 
 class Posts extends React.Component {
-  state = { posts: [], currentUser: {}, };
+  state = { posts: [], };
 
   componentDidMount() {
     axios.get(`/api/posts`)
@@ -17,7 +17,7 @@ class Posts extends React.Component {
 
   deletePost = (id) => {
     axios.delete(`/api/posts/${id}`)
-      .then( response => {
+      .then(response => {
         const { posts, } = this.state;
         this.setState({ posts: posts.filter(p => p.id !== id), })
       })
@@ -28,29 +28,35 @@ class Posts extends React.Component {
 
     if (posts.length <= 0)
       return <h2>No Posts To See</h2>
-      return posts.map( post => 
-      <Post key={post.id} 
-         {...post } 
-          currentUser
-          deletePost={this.deletePost} 
+    return posts.map(post =>
+      <Post key={post.id}
+        {...post}
+        currentUser
+        deletePost={this.deletePost}
       />)
-      
+
   }
 
   render() {
     return (
       <>
-        <Header as="h1">My Posts</Header>
-        <br />
-        <Card>
-          <Card.Content>
-          {this.renderPosts()}
-          </Card.Content>
+        <Container>
 
-        </Card>
+          <Header as="h1">My Posts</Header>
+          <br />
+          <Grid columns={3}
+          >
+            <Grid.Row >
+              <Grid.Column>
+                {this.renderPosts()}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
       </>
     )
   }
 }
+
 Posts.contextType = AuthContext;
 export default Posts;

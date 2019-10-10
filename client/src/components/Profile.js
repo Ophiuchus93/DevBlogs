@@ -1,16 +1,18 @@
 import React from "react";
 import { AuthConsumer, } from "../providers/AuthProvider";
 import Dropzone from "react-dropzone";
-import { Container, Form, Grid, Image, Divider, Header, Button, } from "semantic-ui-react";
-const defaultImage = 'https://previews.123rf.com/images/urfandadashov/urfandadashov1808/urfandadashov180818343/108180118-user-vector-icon-isolated-on-transparent-background-user-logo-concept.jpg';
+import { Container, Form, Grid, Image, Header, Button, } from "semantic-ui-react";
+
+const defaultImage = 'https://react.semantic-ui.com/images/avatar/large/matthew.png';
+
 class Profile extends React.Component {
-  state = { editing: false, formValues: { name: "", email: "", file: "", }, };
+  state = { editing: false, formValues: { firstName: "", lastName: "", email: "", file: "", }, };
   componentDidMount() {
-    const { auth: { user: { name, email, }, }, } = this.props;
-    this.setState({ formValues: { name, email, }, });
+    const { auth: { user: { firstName, lastName, email, }, }, } = this.props;
+    this.setState({ formValues: { firstName, lastName, email, }, });
   };
   toggleEdit = () => {
-    this.setState({ editing: !this.state.editing, });
+    this.setState({ editing: !this.state.editing });
   };
   profileView = () => {
     const { auth: { user, }, } = this.props;
@@ -20,8 +22,9 @@ class Profile extends React.Component {
           <Image src={user.image || defaultImage} />
         </Grid.Column>
         <Grid.Column width={8}>
-          <Header as="h1">{ user.name }</Header>
-          <Header as="h1">{ user.email }</Header>
+          <Header as="h1">Name: { user.firstName } { user.lastName }</Header>
+          <Header as="h2">Username: {user.userName}</Header>
+          <Header as="h2">Email Address: { user.email }</Header>
         </Grid.Column>
       </>
     );
@@ -31,16 +34,16 @@ class Profile extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    const { formValues: { name, email, file, }, } = this.state;
+    const { formValues: { firstName, lastName, email, file, }, } = this.state;
     const { auth: { user, updateUser, }, } = this.props;
-    updateUser(user.id, { name, email, file, });
+    updateUser(user.id, { firstName, lastName, email, file, });
     this.setState({ editing: false, });
   };
   handleDrop = (files) => {
     this.setState({ formValues: { ...this.state.formValues, file: files[0], } });
   };
   editView = () => {
-    const { formValues: { name, email, }, } = this.state;
+    const { formValues: { firstName, lastName, email, }, } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Grid.Column width={4}>
@@ -66,9 +69,17 @@ class Profile extends React.Component {
         </Grid.Column>
         <Grid.Column width={8}>
           <Form.Input 
-            label="Name"
-            name="name"
-            value={name}
+            label="First Name"
+            name="First Name"
+            value={firstName}
+            autoFocus
+            required
+            onChange={this.handleChange}
+          />
+          <Form.Input 
+            label="Last Name"
+            name="Last Name"
+            value={lastName}
             required
             onChange={this.handleChange}
           />
