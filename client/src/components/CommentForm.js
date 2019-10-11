@@ -14,14 +14,6 @@ class CommentForm extends React.Component {
     this.setState({ user_id: this.props.auth.user.id })
   }
 
-  deleteComment = (id) => {
-    axios.delete(`/api/posts/${this.props.match.params.id}/comments/${id}`)
-      .then(response => {
-        const { posts, } = this.state;
-        this.setState({ posts: posts.filter(p => p.id !== id), })
-      })
-  }
-
   handleChange = (e) => {
     const { name, value, } = e.target;
     this.setState({ [name]: value, })
