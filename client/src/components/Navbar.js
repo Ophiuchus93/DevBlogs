@@ -61,7 +61,6 @@ class Navbar extends React.Component {
             />
           </Link>
          
-
         </Menu.Menu>
       )
     }
@@ -71,7 +70,6 @@ class Navbar extends React.Component {
     return (
       <Container>
         <Menu pointing secondary>
-
           <Link to="/">
             <Image style={{width: "65px", height: "75px", paddingTop: "8px",}} src={Beaker} />
           </Link>
@@ -95,7 +93,6 @@ class Navbar extends React.Component {
     )
   }
 }
-
 export class ConnectedNavbar extends React.Component {
   render() {
     return (
@@ -107,5 +104,4 @@ export class ConnectedNavbar extends React.Component {
     )
   }
 }
-
 export default withRouter(ConnectedNavbar);

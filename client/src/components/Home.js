@@ -16,9 +16,16 @@ class Home extends React.Component {
       })
   };
 
+  renderPosts = () => {
+    const { posts } = this.state;
+    if (posts.length <= 0)
+      return <h2>Currently no posts...</h2>
+    return posts.map(post => <Post key={post.id} {...post} deletePost={this.deletePost}/>)
+  };
+
   deletePost = (id) => {
     axios.delete(`/api/posts/${id}`)
-      .then( response => {
+      .then(response => {
         const { posts, } = this.state;
         this.setState({ posts: posts.filter(p => p.id !== id), })
       })

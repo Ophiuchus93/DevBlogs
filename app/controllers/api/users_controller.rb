@@ -1,10 +1,8 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_user!
-
   def index
     render json: User.all
   end
-
 # def update
 #   # binding.pry
 #     user = User.find(params[:id])
@@ -30,7 +28,6 @@ class Api::UsersController < ApplicationController
 #       render json: { errors: user.errors.full_messages }, status: 422
 #     end
 #   end
-
 def update
   user = User.find(params[:id])
   user.firstName = params[:firstName] ? params[:firstName] : user.firstName
@@ -43,7 +40,7 @@ def update
     puts 'file is an Empty String.  Upload valid file.'
   else
     begin
-      ext = File.extname(file.tempfile)
+      # ext = File.extname(file.tempfile)
       cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
       user.image = cloud_image['secure_url']
     # rescue => e
@@ -57,7 +54,6 @@ def update
     render json: { errors: user.errors.full_messages }, status: 422
   end
 end
-
   def show
     render json: User.find(params[:id])
   end

@@ -7,14 +7,13 @@ const defaultImage = 'https://react.semantic-ui.com/images/avatar/large/matthew.
 
 class Profile extends React.Component {
   state = { editing: false, formValues: { firstName: "", lastName: "", email: "", file: "", }, };
-
   componentDidMount() {
     const { auth: { user: { firstName, lastName, email, }, }, } = this.props;
     this.setState({ formValues: { firstName, lastName, email, }, });
   };
 
   toggleEdit = () => {
-    this.setState({ editing: !this.state.editing, });
+    this.setState({ editing: !this.state.editing });
   };
 
   profileView = () => {
