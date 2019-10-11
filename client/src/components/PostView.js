@@ -21,19 +21,27 @@ class PostView extends React.Component {
       .catch(err => console.log(err))
     }
 
-  renderComments = () => {
+  renderComments = (props) => {
     const { comments } = this.state;
     if (comments.length <= 0)
       return <h3>No Comments</h3>
     return comments.map(comment =>
-      <Comment key={comment.id} body={comment.body} />)
+      <Comment key={comment.id} body={comment.body} deleteComment={this.deleteComment} comment={comment} />)
   }
 
   addComment = (comment) => {
-    const { comments } = this.state
+    const { comments } = this.state;
     axios.post(`/api/posts/${this.state.post.id}/comments`, comment)
       .then( res => this.setState({ comments: [...comments ,res.data] }))
   };
+
+  deleteComment = (id) => {
+    const { comments, post } = this.state;
+    axios.delete(`/api/posts/${post.id}/comments/${id}`)
+      .then( res => {
+        this.setState({ comments: comments.filter(c => c.id !== id), })
+      })
+  }
 
   render() {
     const { title, body, } = this.state.post;
