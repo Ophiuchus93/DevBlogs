@@ -38,6 +38,7 @@ class CommentForm extends React.Component {
             placeholder="What do you think?"
             required
             value={body}
+            maxLength="150"
             onChange={this.handleChange}
           />
           <br />
