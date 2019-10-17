@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Form, TextArea, Header } from "semantic-ui-react"
 import { AuthConsumer } from '../providers/AuthProvider';
 

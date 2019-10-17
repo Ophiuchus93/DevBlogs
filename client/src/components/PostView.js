@@ -2,7 +2,7 @@ import React from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import axios from "axios";
-import { Container, Segment, Header, } from "semantic-ui-react";
+import { Container, Segment, Header, Image, } from "semantic-ui-react";
 
 class PostView extends React.Component {
   state = { post: {}, comments: [], }
@@ -44,10 +44,11 @@ class PostView extends React.Component {
   }
 
   render() {
-    const { title, body, } = this.state.post;
+    const { title, body, image } = this.state.post;
     return (
       <div>
         <Segment>
+          <Image src={image} />
           <Header as="h1" textAlign="center"> {title} </Header>
           <hr />
           <br />
