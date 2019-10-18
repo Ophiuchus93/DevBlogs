@@ -34,12 +34,11 @@ class Home extends React.Component {
         const { posts, } = this.state;
         this.setState({ posts: posts.filter(p => p.id !== id), })
       })
-  }
-
+  };
 
   updateSearch(event) {
     this.setState({ search: event.target.value.substr(0, 20) })
-  }
+  };
 
   renderPosts = () => {
     const { posts } = this.state;
@@ -52,15 +51,18 @@ class Home extends React.Component {
 
     if (posts.length <= 0)
       return <h2>Currently no posts...</h2>
-    return filteredPosts.map(post => 
-    <Post key={post.id} {...post} deletePost={this.deletePost} />
+    return filteredPosts.map(post =>
+      <Post
+        key={post.id}
+        {...post}
+        deletePost={this.deletePost}
+      />
     )
   };
 
   render() {
     return (
       <>
-        <Header as="h1"></Header>
         <br />
         <Input
           value={this.state.search}
@@ -80,8 +82,8 @@ class Home extends React.Component {
           </Grid>
         </div>
       </>
-    )
-  }
+    );
+  };
 };
 
 const styles = {
@@ -105,9 +107,3 @@ const styles = {
 
 
 export default Home;
-
-
-
-
-
-
