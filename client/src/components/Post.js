@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, } from "react-router-dom";
 import { Container, Button, Grid, Header, Icon, Segment } from "semantic-ui-react";
-// import PostView from "./PostView";
 
 const Post = (props) => {
 

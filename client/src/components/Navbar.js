@@ -1,6 +1,6 @@
 import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
-import { Button, Container, Dropdown, Image, Menu, } from 'semantic-ui-react'
+import { Button, Container, Image, Menu, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import Avatar from "./Avatar";
 import Beaker from "../images/Beaker.png";
@@ -8,12 +8,6 @@ import Beaker from "../images/Beaker.png";
 
 class Navbar extends React.Component {
   
-// profilePic = () => {
-//   const { user }
-//     <span>
-//       <Image avatar src={ user.image } /> {user.userName}
-//     </span>
-// }
 
 
   rightNavItems = () => {
@@ -22,22 +16,16 @@ class Navbar extends React.Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
-          {/* <Link to="/Profile"> */}
-            <Dropdown icon={null} >
-              <Dropdown.Menu>
-                <Dropdown.Item text="Account" />
-              </Dropdown.Menu>
-            </Dropdown>
-            <Image avatar src={user.image} /> {user.userName}
-          {/* <Avatar/> */}
-          {/* </Link> */}
-            {/* <Button
+          <Link to="/Profile">
+          <Avatar/>
+          </Link>
+            <Button
               id="logout"
               name='logout'
               color="blue"
               onClick={ () => handleLogout(this.props.history) }
             >
-            </Button> */}
+            </Button>
         </Menu.Menu>
       )
     } else {

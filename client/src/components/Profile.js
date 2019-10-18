@@ -68,7 +68,6 @@ class Profile extends React.Component {
   };
 
   handleDrop = (files) => {
-    // debugger
     this.setState({ formValues: { ...this.state.formValues, file: files[0], } });
   };
 
