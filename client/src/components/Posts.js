@@ -3,7 +3,7 @@ import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
 // import { Link, } from "react-router-dom"
-import { Container, Grid, Header, } from "semantic-ui-react";
+import { Card, Container, Grid, Header, } from "semantic-ui-react";
 
 class Posts extends React.Component {
   state = { posts: [], };
@@ -39,19 +39,23 @@ class Posts extends React.Component {
 
   render() {
     return (
-        <Container>
+    
+<>
+        <Header as="h1">My Posts</Header>
+        <br />
+       
+       <Grid>
+      <Grid.Row columns={3}>
 
-          <Header as="h1">My Posts</Header>
-          <br />
-          <Grid columns={3}
-          >
-            <Grid.Row >
-              <Grid.Column>
-                {this.renderPosts()}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+              {/* <Card>
+                <Card.Content> */}
+                  {this.renderPosts()}
+                {/* </Card.Content>
+              </Card> */}
+      </Grid.Row>
+       </Grid>
+         </>
+     
     )
   }
 }
