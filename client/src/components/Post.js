@@ -1,29 +1,29 @@
 import React from "react";
 import { Link, } from "react-router-dom";
-import { Container, Button, Grid, Header, Icon, Segment } from "semantic-ui-react";
+import { Container, Button, Grid, Header, Icon, Image, Segment } from "semantic-ui-react";
 // import PostView from "./PostView";
 
 const Post = (props) => {
 
   return (
     <Segment>
-      <Container>
+       <Container> 
         <Grid>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as="h2" textAlign="right">{props.title}</Header>
-              <hr />
-              <p>{props.body}</p>
-              <br />
-              <br />
-              <Button
-                icon basic
-                as={Link}
-                color="green"
-                to={`posts/${props.id}`}
+          <Grid.Row >
+            <Grid.Column as={Link} to={`posts/${props.id}`}>
+              <Image src={props.image}
+              // as={Link} to={`posts/${props.id}`}
+              />
+              <Header as="h2" 
+              textAlign="right"
+              // as={Link} to={`posts/${props.id}`}
               >
-                <Icon name="eye" />
-              </Button>
+              {props.title}
+              </Header>
+              <hr />
+              <p style={{color: "black"}}>{props.body}</p>
+              <br />
+              <br />
               <Button
                 icon basic
                 as={Link} to={`/api/posts/${props.id}`}
@@ -32,6 +32,10 @@ const Post = (props) => {
               >
                 <Icon name="pencil alternate" />
               </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Container>
               <Button
                 icon basic
                 color="red"
@@ -40,10 +44,6 @@ const Post = (props) => {
               >
                 <Icon name="x" />
               </Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
     </Segment>
   )
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
+import PaginationBar from "./Pagination"
 import { Container, Grid, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
@@ -20,7 +21,12 @@ class Home extends React.Component {
     const { posts } = this.state;
     if (posts.length <= 0)
       return <h2>Currently no posts...</h2>
-    return posts.map(post => <Post key={post.id} {...post} deletePost={this.deletePost}/>)
+    return posts.map(post => 
+    <Post key={post.id} 
+    {...post} 
+    deletePost={this.deletePost}
+    />
+    )
   };
 
   deletePost = (id) => {
@@ -69,6 +75,10 @@ class Home extends React.Component {
           >
             {this.renderPosts()}
           </Grid>
+          <br/>
+          <br/>
+          <br/>
+          <PaginationBar />
         </Container>
       </>
     )

@@ -39,7 +39,6 @@ class Posts extends React.Component {
 
   render() {
     return (
-      <>
         <Container>
 
           <Header as="h1">My Posts</Header>
@@ -53,7 +52,6 @@ class Posts extends React.Component {
             </Grid.Row>
           </Grid>
         </Container>
-      </>
     )
   }
 }

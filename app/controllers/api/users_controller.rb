@@ -33,7 +33,6 @@ def update
   user.firstName = params[:firstName] ? params[:firstName] : user.firstName
   user.lastName = params[:lastName] ? params[:lastName] : user.lastName
   user.email = params[:email] ? params[:email] : user.email
-  
   file = params[:file]
   
   if file == ''

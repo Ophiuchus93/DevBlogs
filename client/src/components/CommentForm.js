@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Form, TextArea, Header } from "semantic-ui-react"
 import { AuthConsumer } from '../providers/AuthProvider';
 
@@ -38,6 +37,7 @@ class CommentForm extends React.Component {
             placeholder="What do you think?"
             required
             value={body}
+            maxLength="150"
             onChange={this.handleChange}
           />
           <br />
