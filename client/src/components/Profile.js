@@ -73,7 +73,7 @@ class Profile extends React.Component {
 
   editView = () => {
     const { auth: { user }, } = this.props;
-    const { formValues: { firstName, lastName, email, file } } = this.state;
+    const { formValues: { firstName, lastName, email, } } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Grid.Column width={4}>
@@ -152,6 +152,7 @@ const ConnectedProfile = (props) => (
     )}
   </AuthConsumer>
 );
+
 const styles = {
   dropzone: {
     height: "150px",

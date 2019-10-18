@@ -33,7 +33,6 @@ def update
   user.firstName = params[:firstName] ? params[:firstName] : user.firstName
   user.lastName = params[:lastName] ? params[:lastName] : user.lastName
   user.email = params[:email] ? params[:email] : user.email
-  
   file = params[:file]
   
   if file == ''
@@ -54,7 +53,9 @@ def update
     render json: { errors: user.errors.full_messages }, status: 422
   end
 end
+
   def show
     render json: User.find(params[:id])
   end
+end
   

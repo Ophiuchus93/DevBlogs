@@ -13,8 +13,19 @@ class Api::PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.new(post_params)
-    if post.save 
+    post = current_user.posts.new(title: params[:title], body: params[:body])
+    file = params[:file]
+
+    if file
+      begin
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
+        post.image = cloud_image["secure_url"]
+        # rescue => e
+        #   render json: { errors: e}, status: 422
+      end
+    end
+
+    if post.save
       render json: post
     else
       render json: { errors: post.errors }, status: 422
@@ -22,17 +33,25 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-     if @post.update(post_params)
-      render json: @post
-     else
-      render json: @post.errors, status: 422
-     end
+      file = params[:file]
+
+      if file == ''
+            puts 'file is an empty string'
+      else
+        begin
+          cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
+          @post.image = cloud_image['secure_url']
+        end
+      end
+      
+      if @post.update(title: params[:title], body: params[:body])
+        render json: Post.all
+      end
   end
 
   def destroy
     @post.destroy
   end
-  
 
   private
 
