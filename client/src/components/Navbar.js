@@ -2,10 +2,13 @@ import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Container, Image, Menu, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
-import Beaker from "../images/Beaker.png";
 import Avatar from "./Avatar";
+import Beaker from "../images/Beaker.png";
+
 
 class Navbar extends React.Component {
+  
+
 
   rightNavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
@@ -17,14 +20,13 @@ class Navbar extends React.Component {
           <Avatar/>
           </Link>
             <Button
-            id="logout"
-            name='logout'
-            color="blue"
-            onClick={ () => handleLogout(this.props.history) }
+              id="logout"
+              name='logout'
+              color="blue"
+              onClick={ () => handleLogout(this.props.history) }
             >
             </Button>
         </Menu.Menu>
-        
       )
     } else {
       return (
@@ -52,10 +54,6 @@ class Navbar extends React.Component {
     }
   }
 
-
-
-
-  
   render() {
     return (
       <Container>

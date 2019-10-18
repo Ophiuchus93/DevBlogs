@@ -53,7 +53,9 @@ def update
     render json: { errors: user.errors.full_messages }, status: 422
   end
 end
+
   def show
     render json: User.find(params[:id])
   end
 end
+  
