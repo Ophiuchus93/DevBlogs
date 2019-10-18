@@ -58,9 +58,3 @@ end
     render json: User.find(params[:id])
   end
   
-  private
-  
-  def user_params
-    params.require(:user).permit(:admin, :firstName, :lastName, :userName, :cohort, :email, :image)
-  end
-end
