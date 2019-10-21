@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-import { Grid, Input, } from "semantic-ui-react";
+import { Card, Container, Grid, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
   state = { posts: [], search: "", };
@@ -74,7 +74,7 @@ class Home extends React.Component {
           placeholder="Search..."
         /> 
         <div style={styles.container}>
-          <Grid>
+          <Grid columns={3}>
             <Grid.Row style={styles.test} columns={3}>
 
             {/* <Card style={styles.testTwo}> */}
@@ -204,9 +204,3 @@ export default Home;
 // };
 
 // export default Home;
-
-
-
-
-
-

@@ -5,7 +5,9 @@ import { Container, Button, Grid, Header, Icon, Image, Segment } from "semantic-
 const Post = (props) => {
 
   return (
-    <Segment style={{backgroundColor: "#fbf9f9"}}>
+    <Grid.Column style={styles.testTwo} width={5}>
+
+    <Segment>
        <Container> 
         <Grid>
           <Grid.Row columns={3} >
@@ -44,7 +46,15 @@ const Post = (props) => {
         </Grid>
         </Container>
     </Segment>
+    </Grid.Column>
+
   )
+}
+
+const styles = {
+  testTwo: {
+    padding: '2em',
+  }
 }
 
 
