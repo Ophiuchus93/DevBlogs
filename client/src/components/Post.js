@@ -5,6 +5,8 @@ import { Container, Button, Grid, Header, Icon, Image, Segment } from "semantic-
 const Post = (props) => {
 
   return (
+    <Grid.Column style={styles.testTwo} width={5}>
+
     <Segment>
        <Container> 
         <Grid>
@@ -44,7 +46,15 @@ const Post = (props) => {
                 <Icon name="x" />
               </Button>
     </Segment>
+    </Grid.Column>
+
   )
+}
+
+const styles = {
+  testTwo: {
+    padding: '2em',
+  }
 }
 
 

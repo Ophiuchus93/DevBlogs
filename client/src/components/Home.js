@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-import { Container, Grid, Input, } from "semantic-ui-react";
+import { Card, Container, Grid, Header, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
-  state = { posts: [], search: "" };
+  state = { posts: [], search: "", };
 
   componentDidMount() {
     axios.get("/api/posts")
@@ -20,11 +20,11 @@ class Home extends React.Component {
     const { posts } = this.state;
     if (posts.length <= 0)
       return <h2>Currently no posts...</h2>
-    return posts.map(post => 
-    <Post key={post.id} 
-    {...post} 
-    deletePost={this.deletePost}
-    />
+    return posts.map(post =>
+      <Post key={post.id}
+        {...post}
+        deletePost={this.deletePost}
+      />
     )
   };
 
@@ -68,32 +68,42 @@ class Home extends React.Component {
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
           icon={{ name: "search" }}
-          style={{ width: "400px" }}
-          iconPosition="left"
           placeholder="Search..."
         />
-        <Container style={{ margin: "10px", padding: "10px" }}>
-          <Grid
-            style={{ paddingLeft: "100px", paddingTop: "30px" }}
-            columns={3}
-            padded="vertically"
-            divided
-          >
-            {this.renderPosts()}
+        <div style={styles.container}>
+          <Grid columns={3}>
+            <Grid.Row style={styles.test} columns={3}>
+
+            {/* <Card style={styles.testTwo}> */}
+              {this.renderPosts()}
+            {/* </Card> */}
+            </Grid.Row>
+
           </Grid>
-          <br/>
-          <br/>
-          <br/>
-        </Container>
+        </div>
       </>
     );
   };
 };
 
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: "50px",
+    // height: "50px",
+    width: "500px"
+  },
+  test: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+  },
+  testTwo: {
+    border: "solid 2px blue",
+  }
+}
+
+
 export default Home;
-
-
-
-
-
-
