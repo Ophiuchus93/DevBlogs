@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-import { Card, Container, Grid, Header, Input, } from "semantic-ui-react";
+import { Grid, Input, } from "semantic-ui-react";
 
 class Home extends React.Component {
   state = { posts: [], search: "", };
@@ -93,7 +93,7 @@ const styles = {
     alignItems: "center",
     marginTop: "50px",
     // height: "50px",
-    width: "500px"
+    // width: "500px"
   },
   test: {
     display: 'flex',

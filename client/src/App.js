@@ -10,7 +10,6 @@ import PostView from "./components/PostView";
 import FetchUser from "./components/FetchUser";
 import Profile from "./components/Profile";
 import ProtectedRoute from './components/ProtectedRoute';
-import UserAdmin from "./components/UserAdmin";
 import { Switch, Route, } from "react-router-dom";
 import { Container, } from "semantic-ui-react";
 
@@ -25,7 +24,6 @@ const App = () => (
           <ProtectedRoute exact path="/form" component={PostForm} />
           <ProtectedRoute exact path="/api/posts/:id" component={PostForm} />
           <ProtectedRoute exact path="/Profile" component={Profile} />
-          <ProtectedRoute exact path="/user/:id" component={UserAdmin} />
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={Posts} /> 
           <Route exact path="/posts/:id" component={PostView} />

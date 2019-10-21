@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
-import { Container, Grid, Header, Input, } from "semantic-ui-react";
+import {   Grid, Header, Input, } from "semantic-ui-react";
 
 
 class Posts extends React.Component {
@@ -65,24 +65,40 @@ class Posts extends React.Component {
           iconPosition="left"
           placeholder="Search..."
         /> 
-        <Container style={{ margin: "10px", padding: "10px" }}>
-          <Grid 
-            style={{ paddingLeft: "100px", paddingTop: "30px" }}
-            columns={3}
-            padded="vertically"
-            divided
-          >
-            <Grid.Row >
-              <Grid.Column>
-                {this.renderPosts()}
-              </Grid.Column>
+         <div style={styles.container}>
+          <Grid columns={3}>
+            <Grid.Row style={styles.test} columns={3}>
+
+            {/* <Card style={styles.testTwo}> */}
+              {this.renderPosts()}
+            {/* </Card> */}
             </Grid.Row>
+
           </Grid>
-        </Container>
+        </div>
       </>
     );
   };
 };
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: "50px",
+    // height: "50px",
+    width: "500px"
+  },
+  test: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+  },
+  testTwo: {
+    border: "solid 2px blue",
+  }
+}
 
 Posts.contextType = AuthContext;
 export default Posts;
