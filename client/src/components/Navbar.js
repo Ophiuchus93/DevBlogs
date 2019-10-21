@@ -3,7 +3,9 @@ import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Container, Image, Menu, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import Beaker from "../images/Beaker.png";
-import Avatar from "./Avatar";
+// import Avatar from "./Avatar";
+import DropdownImage from "./DropdownImage"
+// import Logout from "./Logout"
 
 class Navbar extends React.Component {
 
@@ -13,16 +15,16 @@ class Navbar extends React.Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
+          <DropdownImage />
           <Link to="/Profile">
-          <Avatar/>
           </Link>
-            <Button
-            id="logout"
-            name='logout'
-            color="blue"
-            onClick={ () => handleLogout(this.props.history) }
-            >
-            </Button>
+          <Button
+                    id="logout"
+                    name='logout'
+                    color="blue"
+                    onClick={() => handleLogout(this.props.history)}
+                >
+                </Button>
         </Menu.Menu>
         
       )
@@ -88,7 +90,10 @@ export class ConnectedNavbar extends React.Component {
     return (
       <AuthConsumer> 
         { auth => 
+          <>
           <Navbar { ...this.props } auth={auth} />
+          {/* <Logout { ...this.props } auth={auth} handleLogout={this.props.handleLogout}/> */}
+          </>
         }
       </AuthConsumer>
     )
