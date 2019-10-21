@@ -42,7 +42,7 @@ class CommentForm extends React.Component {
           />
           <br />
           <br />
-          <Form.Button color="green">
+          <Form.Button floated="right" color="blue">
           Submit
           </Form.Button>
           </Form>

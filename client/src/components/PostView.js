@@ -64,9 +64,9 @@ class PostView extends React.Component {
           <CommentForm {...this.props} addComment={this.addComment}/>
           <br />
           <Header as="h4">Comments:</Header>
-          <Segment>
+          {/* <Segment> */}
             {this.renderComments()}
-          </Segment>
+          {/* </Segment> */}
         </Segment>
       </div>
     );

@@ -5,10 +5,10 @@ import { Container, Button, Grid, Header, Icon, Image, Segment } from "semantic-
 const Post = (props) => {
 
   return (
-    <Segment>
+    <Segment style={{backgroundColor: "#fbf9f9"}}>
        <Container> 
         <Grid>
-          <Grid.Row >
+          <Grid.Row columns={3} >
             <Grid.Column as={Link} to={`posts/${props.id}`}>
               <Image src={props.image}
               // as={Link} to={`posts/${props.id}`}
@@ -31,18 +31,18 @@ const Post = (props) => {
               >
                 <Icon name="pencil alternate" />
               </Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
               <Button
                 icon basic
                 color="red"
                 size="medium"
                 onClick={() => props.deletePost(props.id)}
-              >
+                >
                 <Icon name="x" />
               </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        </Container>
     </Segment>
   )
 }
