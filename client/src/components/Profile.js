@@ -2,7 +2,9 @@ import React from "react";
 import { AuthConsumer, } from "../providers/AuthProvider";
 import Dropzone from "react-dropzone";
 import { Container, Form, Grid, Image, Header, Button, } from "semantic-ui-react";
+
 const defaultImage = 'https://react.semantic-ui.com/images/avatar/large/matthew.png';
+
 class Profile extends React.Component {
   state = { editing: false, formValues: { firstName: "", lastName: "", email: "", file: "", }, };
   componentDidMount() {
@@ -136,9 +138,9 @@ class Profile extends React.Component {
 };
 const ConnectedProfile = (props) => (
   <AuthConsumer>
-    { auth => (
+    { auth => 
       <Profile {...props} auth={auth} />
-    )}
+    }
   </AuthConsumer>
 );
 const styles = {

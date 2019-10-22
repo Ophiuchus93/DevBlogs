@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, } from "react-router-dom";
 import { Container, Button, Grid, Header, Icon, Image, Segment } from "semantic-ui-react";
+import Like from "./Like"
+import Dislike from "./Dislike"
 
 const Post = (props) => {
-
   return (
     <Grid.Column style={styles.testTwo} width={5}>
 
@@ -45,6 +46,8 @@ const Post = (props) => {
               >
                 <Icon name="x" />
               </Button>
+              <Like />
+                <Dislike />
     </Segment>
     </Grid.Column>
 
