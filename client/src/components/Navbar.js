@@ -1,13 +1,16 @@
 import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
-import { Button, Container, Image, Menu, } from 'semantic-ui-react'
+import { Button, Container, Image, Menu, Header, Dropdown, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
+import Avatar from "./Avatar";
 import Beaker from "../images/Beaker.png";
-// import Avatar from "./Avatar";
-import DropdownImage from "./DropdownImage"
-// import Logout from "./Logout"
+import User from "../images/User.png";
+import DropdownImage from "./DropdownImage";
+
 
 class Navbar extends React.Component {
+  
+
 
   rightNavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
@@ -15,18 +18,21 @@ class Navbar extends React.Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
-          <DropdownImage />
-          <Link to="/Profile">
-          </Link>
-          <Button
-                    id="logout"
-                    name='logout'
-                    color="blue"
-                    onClick={() => handleLogout(this.props.history)}
-                >
-                </Button>
+          <Menu.Item>
+            <Header.Content>
+            <Image avatar src={user.image || User }   />
+              <Dropdown title="Dropdown">
+                <Dropdown.Menu>
+
+                  {/* <Dropdown.Item href="/events/new" text='Add New Event' icon="add" /> */}
+                  <Dropdown.Item href={`/Profile`} text='Profile' icon="arrow right" />
+                  <Dropdown.Item text='Logout' onClick={() => handleLogout(this.props.history)} icon="log out" />
+                </Dropdown.Menu>
+              </Dropdown>
+            </Header.Content>
+            <br/>
+          </Menu.Item>
         </Menu.Menu>
-        
       )
     } else {
       return (
@@ -54,10 +60,6 @@ class Navbar extends React.Component {
     }
   }
 
-
-
-
-  
   render() {
     return (
       <Container>
@@ -90,11 +92,9 @@ export class ConnectedNavbar extends React.Component {
     return (
       <AuthConsumer> 
         { auth => 
-          <>
           <Navbar { ...this.props } auth={auth} />
-          {/* <Logout { ...this.props } auth={auth} handleLogout={this.props.handleLogout}/> */}
-          </>
         }
+        
       </AuthConsumer>
     )
   }

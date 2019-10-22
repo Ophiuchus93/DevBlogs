@@ -11,11 +11,9 @@ class Profile extends React.Component {
     const { auth: { user: { firstName, lastName, email, }, }, } = this.props;
     this.setState({ formValues: { firstName, lastName, email, }, });
   };
-
   toggleEdit = () => {
     this.setState({ editing: !this.state.editing });
   };
-
   profileView = () => {
     const { auth: { user, }, } = this.props;
     return (
@@ -30,11 +28,9 @@ class Profile extends React.Component {
       </>
     );
   };
-
   // handleChange = (e, { firstName, lastName, value, }) => {
   //   this.setState({ formValues: { ...this.state.formValues, [firstName]: firstName, lastName, value, }, });
   // };
-
   handleChange = (e) => {
     const { name, value, } = e.target;
     this.setState({
@@ -44,7 +40,6 @@ class Profile extends React.Component {
       }
     })
   }
-
   // handleSubmit = (e) => {
   //   e.preventDefault();
   //   const { formValues: { name, email, file, }, } = this.state;
@@ -58,7 +53,6 @@ class Profile extends React.Component {
   //     },
   //   });
   // }
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { formValues: { firstName, lastName, email, file, }, } = this.state;
@@ -66,15 +60,12 @@ class Profile extends React.Component {
     updateUser(user.id, { firstName, lastName, email, file, });
     this.setState({ editing: false, formValues: { ...this.state.formValues, file: '' } });
   };
-
   handleDrop = (files) => {
-    // debugger
     this.setState({ formValues: { ...this.state.formValues, file: files[0], } });
   };
-
   editView = () => {
     const { auth: { user }, } = this.props;
-    const { formValues: { firstName, lastName, email, file } } = this.state;
+    const { formValues: { firstName, lastName, email, } } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
         <Grid.Column width={4}>
@@ -121,7 +112,6 @@ class Profile extends React.Component {
             required
             onChange={this.handleChange}
           />
-
           <Form.Button>Update</Form.Button>
         </Grid.Column>
       </Form>
@@ -148,9 +138,9 @@ class Profile extends React.Component {
 };
 const ConnectedProfile = (props) => (
   <AuthConsumer>
-    { auth => (
+    { auth => 
       <Profile {...props} auth={auth} />
-    )}
+    }
   </AuthConsumer>
 );
 const styles = {
