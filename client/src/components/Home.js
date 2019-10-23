@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import Post from "./Post";
 import { Grid, Input, } from "semantic-ui-react";
+import { CardDeck, Card, } from "react-bootstrap";
+import "../App.css";
 
 class Home extends React.Component {
   state = { posts: [], search: "", };
@@ -70,40 +72,44 @@ class Home extends React.Component {
           icon={{ name: "search" }}
           placeholder="Search..."
         />
-        <div style={styles.container}>
-          <Grid columns={3}>
+        
+        <Card>
+        <CardDeck>
+          {this.renderPosts()}
+        </CardDeck>
+      </Card>
+
+          {/* <Grid columns={3}>
             <Grid.Row style={styles.test} columns={3}>
 
-            {/* <Card style={styles.testTwo}> */}
               {this.renderPosts()}
-            {/* </Card> */}
             </Grid.Row>
 
-          </Grid>
-        </div>
+          </Grid> */}
+        
       </>
     );
   };
 };
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: "50px",
-    // height: "50px",
-    // width: "500px"
-  },
-  test: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly'
-  },
-  testTwo: {
-    border: "solid 2px blue",
-  }
-}
+// const styles = {
+//   container: {
+//     display: "flex",
+//     flexDirection: "row",
+//     alignItems: "center",
+//     marginTop: "50px",
+//     // height: "50px",
+//     // width: "500px"
+//   },
+//   test: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//     justifyContent: 'space-evenly'
+//   },
+//   testTwo: {
+//     border: "solid 2px blue",
+//   }
+// }
 
 
 export default Home;

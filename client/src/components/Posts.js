@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
-import {   Grid, Header, Input, } from "semantic-ui-react";
+import { Grid, Header, Input, } from "semantic-ui-react";
+import { Card, CardDeck } from "react-bootstrap"
+// import "../App.css";
 
 
 class Posts extends React.Component {
@@ -15,7 +17,7 @@ class Posts extends React.Component {
       .then(res => {
         this.setState({ posts: res.data });
       })
-      .catch( error => {
+      .catch(error => {
         console.log(error)
       })
   };
@@ -29,7 +31,7 @@ class Posts extends React.Component {
   };
 
   updateSearch(event) {
-    this.setState({ search: event.target.value.substr(0, 20)})
+    this.setState({ search: event.target.value.substr(0, 20) })
   };
 
   renderPosts = () => {
@@ -43,7 +45,7 @@ class Posts extends React.Component {
     if (posts.length <= 0)
       return <h2>Currently no posts...</h2>
     return filteredPosts.map(post =>
-      <Post 
+      <Post
         key={post.id}
         {...post}
         currentUser
@@ -55,7 +57,31 @@ class Posts extends React.Component {
   render() {
     return (
       <>
-        <Header as="h1">My Posts</Header>
+      <br />
+      <Input 
+          value={this.state.search}
+          onChange={this.updateSearch.bind(this)}
+          icon={{ name: "search" }}
+          style={{ width: "400px" }}
+          iconPosition="left"
+          placeholder="Search..."
+        /> 
+        <br />
+        <br />
+        <br />
+      <Card>
+        <CardDeck>
+          {this.renderPosts()}
+        </CardDeck>
+      </Card>
+      </>
+    );
+  };
+};
+
+
+
+{/* <Header as="h1">My Posts</Header>
         <br />
         <Input 
           value={this.state.search}
@@ -69,36 +95,34 @@ class Posts extends React.Component {
           <Grid columns={3}>
             <Grid.Row style={styles.test} columns={3}>
 
-            {/* <Card style={styles.testTwo}> */}
               {this.renderPosts()}
-            {/* </Card> */}
             </Grid.Row>
 
           </Grid>
-        </div>
-      </>
-    );
-  };
-};
+        </div> */}
 
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: "50px",
-    // height: "50px",
-    width: "500px"
-  },
-  test: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly'
-  },
-  testTwo: {
-    border: "solid 2px blue",
-  }
-}
+//     );
+//   };
+// };
+
+// const styles = {
+//   container: {
+//     display: "flex",
+//     flexDirection: "row",
+//     alignItems: "center",
+//     marginTop: "50px",
+//     // height: "50px",
+//     width: "500px"
+//   },
+//   test: {
+//     display: 'flex',
+//     flexDirection: 'row',
+//     justifyContent: 'space-evenly'
+//   },
+//   testTwo: {
+//     border: "solid 2px blue",
+//   }
+// }
 
 Posts.contextType = AuthContext;
 export default Posts;

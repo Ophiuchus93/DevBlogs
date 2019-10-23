@@ -1,11 +1,12 @@
 import React from 'react';
 import { Card, } from 'semantic-ui-react';
 import { Link, } from "react-router-dom";
+import { AuthConsumer, } from "../providers/AuthProvider";
 // import axios from "axios"
 
 
 class Comment extends React.Component {
-  state = { body: "" };
+  state = { body: ""};
 
 
 
