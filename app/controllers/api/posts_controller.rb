@@ -15,7 +15,7 @@ class Api::PostsController < ApplicationController
   def create
     post = current_user.posts.new(title: params[:title], body: params[:body])
     file = params[:file]
-
+    
     if file
       begin
         cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)

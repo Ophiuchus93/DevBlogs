@@ -1,6 +1,7 @@
 import React from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
+import Like from "./Like";
 import axios from "axios";
 import { Container, Segment, Header, Image, } from "semantic-ui-react";
 
@@ -13,13 +14,13 @@ class PostView extends React.Component {
         this.setState({ post: res.data })
       })
       .catch(err => console.log(err))
-    
+
     axios.get(`/api/posts/${this.props.match.params.id}/comments`)
       .then(res => {
         this.setState({ comments: res.data })
       })
       .catch(err => console.log(err))
-    }
+  }
 
   renderComments = (props) => {
     const { comments } = this.state;
@@ -32,23 +33,39 @@ class PostView extends React.Component {
   addComment = (comment) => {
     const { comments } = this.state;
     axios.post(`/api/posts/${this.state.post.id}/comments`, comment)
-      .then( res => this.setState({ comments: [...comments ,res.data] }))
+      .then(res => this.setState({ comments: [...comments, res.data] }))
   };
 
   deleteComment = (id) => {
     const { comments, post } = this.state;
     axios.delete(`/api/posts/${post.id}/comments/${id}`)
-      .then( res => {
+      .then(res => {
         this.setState({ comments: comments.filter(c => c.id !== id), })
       })
   }
+
+
+  //   sample = () => {
+  //     const { posts, } = this.state;
+  //   if (posts.length) {
+  //     const index = Math.floor(Math.random() * posts.length);
+  //     return posts[index];
+  //   } else {
+  //     return null;
+  //   }
+  // };
+
+
+
 
   render() {
     const { title, body, image } = this.state.post;
     return (
       <div>
         <Segment>
-          <Image src={image} />
+          <div style={styles.image} >
+            <Image src={image} />
+          </div>
           <Header as="h1" textAlign="center"> {title} </Header>
           <hr />
           <br />
@@ -60,17 +77,30 @@ class PostView extends React.Component {
           <br />
           <br />
           <br />
+            <Like />
           <br />
-          <CommentForm {...this.props} addComment={this.addComment}/>
+          <CommentForm {...this.props} addComment={this.addComment} />
           <br />
           <Header as="h4">Comments:</Header>
-          <Segment>
-            {this.renderComments()}
-          </Segment>
+
+          {this.renderComments()}
+
         </Segment>
+
       </div>
     );
   }
 };
+
+const styles = {
+  image: {
+    display: "flex",
+    // border: "solid 2px blue",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "2em",
+  }
+}
 
 export default PostView;

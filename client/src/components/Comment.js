@@ -1,32 +1,37 @@
 import React from 'react';
-import { Button, Card, Container, Icon} from 'semantic-ui-react';
+import { Card, } from 'semantic-ui-react';
+import { Link, } from "react-router-dom";
+import { AuthConsumer, } from "../providers/AuthProvider";
 // import axios from "axios"
 
 
 class Comment extends React.Component {
- state = {body: "" };
-
- 
+  state = { body: ""};
 
 
- render() {
-   const { body } = this.props;
-   return (
 
-      <Container>
-     <Card>
-       <Card.Content> {body} </Card.Content>
-       <Button
-                icon basic
-                color="red"
-                size="tiny"
-                onClick={() => this.props.deleteComment(this.props.comment.id)}
-              >
-                <Icon name="x" />
-              </Button>
-     </Card>
-      </Container>
-   )
- }
+
+  render() {
+    const { body } = this.props;
+    return (
+
+
+      <Card style={styles.comments}>
+        <Card.Content> {body} </Card.Content>
+        <Link onClick={() => this.props.deleteComment(this.props.comment.id)}>
+          Delete
+        </Link>
+      </Card>
+
+    )
+  }
+}
+
+
+const styles = {
+
+  comments: {
+    background: "#f2f2f2",
+  }
 }
 export default Comment;
