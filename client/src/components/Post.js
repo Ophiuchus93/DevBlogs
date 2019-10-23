@@ -8,14 +8,14 @@ const Post = (props) => {
   return (
     <div>
       
-        <Card bg="light" style={{ width: '24rem' }}>
+        <Card bg="light" style={{ width: '24rem' }} as={Link} to={`posts/${props.id}`}>
           <Card.Body>
 
             <Image variant="top" style={{height: "20rem"}} src={props.image} thumbnail />
             <Card.Title>{props.title}</Card.Title>
             <Card.Text>{props.body}</Card.Text>
           </Card.Body>
-          <Like />
+          
           <Dropdown>
   <Dropdown.Toggle variant="Snfo" >
     Actions

@@ -1,6 +1,7 @@
 import React from "react";
 import CommentForm from "./CommentForm";
 import Comment from "./Comment";
+import Like from "./Like";
 import axios from "axios";
 import { Container, Segment, Header, Image, } from "semantic-ui-react";
 
@@ -76,6 +77,7 @@ class PostView extends React.Component {
           <br />
           <br />
           <br />
+            <Like />
           <br />
           <CommentForm {...this.props} addComment={this.addComment} />
           <br />
