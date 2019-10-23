@@ -3,6 +3,7 @@ import axios from "axios";
 import Post from "./Post";
 import { Input, } from "semantic-ui-react";
 import { Card, CardDeck, CardColumns, } from "react-bootstrap";
+import Like from "./Like";
 // import { Card, Container, Grid, Header, Input, } from "semantic-ui-react";
 import '../App.css';
 
@@ -79,6 +80,7 @@ class Home extends React.Component {
         {/* <div style={styles.container}> */}
           <CardColumns>
             <Card>
+              <Like />
               {/* <Grid.Row style={styles.test} columns={3}> */}
 
               {/* <Card style={styles.testTwo}> */}

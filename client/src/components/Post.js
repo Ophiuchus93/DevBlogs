@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, } from "react-router-dom";
-// import { Container, Button, Grid, Header, Icon, Image, Segment } from "semantic-ui-react";
 import { Icon, } from "semantic-ui-react";
 import { Button, Card, CardDeck, CardColumns, Image, } from "react-bootstrap";
 
