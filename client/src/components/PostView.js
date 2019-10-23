@@ -47,16 +47,19 @@ class PostView extends React.Component {
     const { title, body, image } = this.state.post;
     return (
       <div>
-        <Segment>
+        {/* <Segment> */}
+        <div style={styles.image}>
           <Image src={image} />
+        </div>
           <Header as="h1" textAlign="center"> {title} </Header>
           <hr />
           <br />
           <Container>
-            <Segment>
+            {/* <Segment> */}
               <p> {body} </p>
-            </Segment>
+            {/* </Segment> */}
           </Container>
+        {/* </Segment> */}
           <br />
           <br />
           <br />
@@ -65,12 +68,23 @@ class PostView extends React.Component {
           <br />
           <Header as="h4">Comments:</Header>
           {/* <Segment> */}
+          
             {this.renderComments()}
           {/* </Segment> */}
-        </Segment>
       </div>
     );
   }
 };
+
+const styles = {
+  image: {
+    display: "flex",
+    // border: "solid 2px blue",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "2em",
+  }
+}
 
 export default PostView;
