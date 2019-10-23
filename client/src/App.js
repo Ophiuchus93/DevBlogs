@@ -24,8 +24,8 @@ const App = () => (
           <ProtectedRoute exact path="/form" component={PostForm} />
           <ProtectedRoute exact path="/api/posts/:id" component={PostForm} />
           <ProtectedRoute exact path="/Profile" component={Profile} />
+          <ProtectedRoute exact path="/posts" component={Posts} /> 
           <Route exact path="/" component={Home} />
-          <Route exact path="/posts" component={Posts} /> 
           <Route exact path="/posts/:id" component={PostView} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

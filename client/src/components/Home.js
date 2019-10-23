@@ -1,10 +1,9 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-import { Input, } from "semantic-ui-react";
-import { Card, CardDeck, CardColumns, } from "react-bootstrap";
-// import { Card, Container, Grid, Header, Input, } from "semantic-ui-react";
-import '../App.css';
+import { Grid, Input, } from "semantic-ui-react";
+import { CardDeck, Card, } from "react-bootstrap";
+import "../App.css";
 
 class Home extends React.Component {
   state = { posts: [], search: "", };
@@ -75,19 +74,22 @@ class Home extends React.Component {
           style={{ width: "400px", color: "indigo", outlineColor: 'none'}}
           iconPosition="left"
           placeholder="Search..."
-        /> 
-        {/* <div style={styles.container}> */}
-          <CardColumns>
-            <Card>
-              {/* <Grid.Row style={styles.test} columns={3}> */}
+        />
+        
+        <Card>
+        <CardDeck>
+          {this.renderPosts()}
+        </CardDeck>
+      </Card>
 
-              {/* <Card style={styles.testTwo}> */}
-                {this.renderPosts()}
-              {/* </Card> */}
-              {/* </Grid.Row> */}
-            </Card>
-          </CardColumns>
-        {/* </div> */}
+          {/* <Grid columns={3}>
+            <Grid.Row style={styles.test} columns={3}>
+
+              {this.renderPosts()}
+            </Grid.Row>
+
+          </Grid> */}
+        
       </>
     );
   };
@@ -100,7 +102,7 @@ class Home extends React.Component {
 //     alignItems: "center",
 //     marginTop: "50px",
 //     // height: "50px",
-//     width: "500px"
+//     // width: "500px"
 //   },
 //   test: {
 //     display: 'flex',
@@ -114,8 +116,3 @@ class Home extends React.Component {
 
 
 export default Home;
-
-
-//  ----- THIS IS THE MOST RECENT ==============
-
-
