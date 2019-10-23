@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, } from "react-router-dom";
 import {  Card, Dropdown, Image, } from "react-bootstrap";
+import Like from "./Like";
 // import { Container, Grid, Header, Image, Segment } from "semantic-ui-react";
 
 const Post = (props) => {
@@ -14,6 +15,7 @@ const Post = (props) => {
             <Card.Title>{props.title}</Card.Title>
             <Card.Text>{props.body}</Card.Text>
           </Card.Body>
+          <Like />
           <Dropdown>
   <Dropdown.Toggle variant="Snfo" >
     Actions
