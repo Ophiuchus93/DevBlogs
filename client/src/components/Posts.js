@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Post from "./Post"
 import { AuthContext } from "../providers/AuthProvider";
-import { Grid, Header, Input, } from "semantic-ui-react";
+import { Input, } from "semantic-ui-react";
 import { Card, CardDeck } from "react-bootstrap"
 // import "../App.css";
 
@@ -51,6 +51,8 @@ class Posts extends React.Component {
         currentUser
         deletePost={this.deletePost}
       />
+     
+    
     )
   };
 
@@ -65,6 +67,7 @@ class Posts extends React.Component {
           style={{ width: "400px" }}
           iconPosition="left"
           placeholder="Search..."
+          
         /> 
         <br />
         <br />
@@ -78,51 +81,6 @@ class Posts extends React.Component {
     );
   };
 };
-
-
-
-{/* <Header as="h1">My Posts</Header>
-        <br />
-        <Input 
-          value={this.state.search}
-          onChange={this.updateSearch.bind(this)}
-          icon={{ name: "search" }}
-          style={{ width: "400px" }}
-          iconPosition="left"
-          placeholder="Search..."
-        /> 
-         <div style={styles.container}>
-          <Grid columns={3}>
-            <Grid.Row style={styles.test} columns={3}>
-
-              {this.renderPosts()}
-            </Grid.Row>
-
-          </Grid>
-        </div> */}
-
-//     );
-//   };
-// };
-
-// const styles = {
-//   container: {
-//     display: "flex",
-//     flexDirection: "row",
-//     alignItems: "center",
-//     marginTop: "50px",
-//     // height: "50px",
-//     width: "500px"
-//   },
-//   test: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-evenly'
-//   },
-//   testTwo: {
-//     border: "solid 2px blue",
-//   }
-// }
 
 Posts.contextType = AuthContext;
 export default Posts;

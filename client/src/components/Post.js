@@ -1,33 +1,35 @@
 import React from "react";
 import { Link, } from "react-router-dom";
-import {  Card, Dropdown, Image, } from "react-bootstrap";
-import Like from "./Like";
+import { Card, Dropdown, Image, } from "react-bootstrap";
 // import { Container, Grid, Header, Image, Segment } from "semantic-ui-react";
 
 const Post = (props) => {
   return (
     <div>
-      
-        <Card bg="light" style={{ width: '24rem' }} as={Link} to={`posts/${props.id}`}>
-          <Card.Body>
 
-            <Image variant="top" style={{height: "20rem"}} src={props.image} thumbnail />
-            <Card.Title>{props.title}</Card.Title>
-            <Card.Text>{props.body}</Card.Text>
-          </Card.Body>
-          
-          <Dropdown>
-  <Dropdown.Toggle variant="Snfo" >
-    Actions
-  </Dropdown.Toggle>
+      <Card bg="light" style={{ width: '20rem' }} border="dark"  >
+        <Card.Body as={Link} to={`posts/${props.id}`}  >
 
-  <Dropdown.Menu>
-    <Dropdown.Item as={Link} to={`/api/posts/${props.id}`}>Edit</Dropdown.Item>
-    <Dropdown.Item onClick={() => props.deletePost(props.id)}>Delete</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
-        </Card>
-      
+          <Image variant="top" style={styles.image} src={props.image} thumbnail />
+          <br />
+          <br />
+          <Card.Title style={{ color: "black" }}>{props.title}</Card.Title>
+          <br />
+          <Card.Text style={{ color: "black", }} >{props.body}</Card.Text>
+        </Card.Body>
+
+        <Dropdown>
+          <Dropdown.Toggle variant="Snfo" >
+            Actions
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to={`/api/posts/${props.id}`}>Edit</Dropdown.Item>
+            <Dropdown.Item onClick={() => props.deletePost(props.id)}>Delete</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Card>
+      <br />
     </div>
     //   <Link
     //   as={Link} to={`/api/posts/${props.id}`}
@@ -74,26 +76,24 @@ const Post = (props) => {
 // )
 // }
 
+const styles = {
+  //   testTwo: {
+  //     padding: '2em',
+  //   },
+
+  image: {
+
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    height: "20rem"
+
+  },
+
+  //   container: {
+  //     // border: "solid 2px red",
+  //     // height: "500px",
+  //   }
+
+}
 export default Post;
-// const styles = {
-//   testTwo: {
-//     padding: '2em',
-//   },
-
-//   image: {
-
-//     display: "flex",
-//     // border: "solid 2px blue",
-//     flexDirection: "column",
-//     // justifyContent: "right",
-//     // alignItems: "center",
-//     // width: "auto",
-//     paddingLeft: "2em",
-//   },
-
-//   container: {
-//     // border: "solid 2px red",
-//     // height: "500px",
-//   }
-
-// }

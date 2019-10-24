@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Post from "./Post";
-import { Grid, Input, } from "semantic-ui-react";
+import { Input, } from "semantic-ui-react";
 import { CardDeck, Card, } from "react-bootstrap";
 import "../App.css";
 
@@ -70,9 +70,13 @@ class Home extends React.Component {
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
           icon={{ name: "search" }}
+          style={{ width: "400px" }}
+          iconPosition="left"
           placeholder="Search..."
         />
-        
+        <br />
+        <br />
+        <br />
         <Card>
         <CardDeck>
           {this.renderPosts()}

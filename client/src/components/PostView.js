@@ -3,7 +3,8 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import Like from "./Like";
 import axios from "axios";
-import { Container, Segment, Header, Image, } from "semantic-ui-react";
+// import { Container, Segment, Header, Image, } from "semantic-ui-react";
+import { Card, Container,  } from "react-bootstrap";
 
 class PostView extends React.Component {
   state = { post: {}, comments: [], }
@@ -61,45 +62,84 @@ class PostView extends React.Component {
   render() {
     const { title, body, image } = this.state.post;
     return (
-      <div>
-        <Segment>
-          <div style={styles.image} >
-            <Image src={image} />
-          </div>
-          <Header as="h1" textAlign="center"> {title} </Header>
+
+      <Container>
+        <Card bg="light" >
+        <Card.Img src={image} style={styles.image} />
+        <Card.Body>
+          <Card.Title as="h3" className="text-center">{title}</Card.Title>
           <hr />
-          <br />
-          <Container>
-            <Segment>
-              <p> {body} </p>
-            </Segment>
-          </Container>
-          <br />
-          <br />
-          <br />
-            <Like />
-          <br />
-          <CommentForm {...this.props} addComment={this.addComment} />
-          <br />
-          <Header as="h4">Comments:</Header>
+          <Card.Text>{body}</Card.Text>
+        </Card.Body>
+        <Card.Footer bg="light">
 
-          {this.renderComments()}
+        <Like />
+        <br />
+        <CommentForm {...this.props} addComment={this.addComment} />
+        </Card.Footer>
+        </Card>
+        <br />
+        <br />
+          <Card.Title as="h4">Comments:</Card.Title>
 
-        </Segment>
+    {this.renderComments()}
+      </Container>
+        
 
-      </div>
+     
+
+
+      // <div>
+      // //   <Segment>
+      // //     <div style={styles.image} >
+      // //       <Image src={image} />
+      // //     </div>
+      // //     <Header as="h1" textAlign="center"> {title} </Header>
+      // //     <hr />
+      // //     <br />
+      // //     <Container>
+      // //       <Segment>
+      // //         <p> {body} </p>
+      // //       </Segment>
+      // //     </Container>
+      // //     <br />
+      // //     <br />
+      // //     <br />
+      // //       <Like />
+      // //     <br />
+      // //     <CommentForm {...this.props} addComment={this.addComment} />
+      // //     <br />
+      // //     <Header as="h4">Comments:</Header>
+
+      // //     {this.renderComments()}
+
+      // //   </Segment>
+
+      // </div>
     );
   }
 };
 
+// const styles = {
+//   image: {
+//     display: "flex",
+//     // border: "solid 2px blue",
+//     flexDirection: "column",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     padding: "2em",
+//   }
+// }
+
 const styles = {
+
   image: {
-    display: "flex",
-    // border: "solid 2px blue",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "2em",
+
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    height: "400px",
+    width: "800px",
   }
 }
 
