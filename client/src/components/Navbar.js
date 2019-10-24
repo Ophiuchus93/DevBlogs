@@ -2,10 +2,9 @@ import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Container, Image, Menu, Header, Dropdown, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
-import Avatar from "./Avatar";
 import Beaker from "../images/Beaker.png";
 import User from "../images/User.png";
-import DropdownImage from "./DropdownImage";
+// import DropdownImage from "./DropdownImage";
 
 
 class Navbar extends React.Component {

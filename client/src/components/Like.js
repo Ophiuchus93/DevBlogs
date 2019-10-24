@@ -1,20 +1,23 @@
 import React from "react";
   class Like extends React.Component {
 state = {
-     count: 0
+     likes: 0
     };
+
    incrementMe = () => {
-    let newCount = this.state.count + 1
+    let newCount = this.state.likes + 1
     this.setState({
-       count: newCount
+       likes: newCount
      })
    }
+
   render() {
    return (
      <div>
-      <button onClick={this.incrementMe}>❤️ Likes: {this.state.count} </button>
+      <button onClick={this.incrementMe}><span role="img" aria-label="heart">❤️</span> {this.state.likes} </button>
      </div>
     )
    }
 } 
+
 export default Like;
