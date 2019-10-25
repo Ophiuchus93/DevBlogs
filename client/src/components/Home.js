@@ -50,7 +50,7 @@ class Home extends React.Component {
           this.state.search.toLowerCase()) !== -1;
       }
     );
-
+    
     if (posts.length <= 0)
       return <h2>Currently no posts...</h2>
     return filteredPosts.map(post =>
@@ -70,7 +70,7 @@ class Home extends React.Component {
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
           icon={{ name: "search" }}
-          style={{ width: "400px" }}
+          style={{ width: "400px", color: "indigo"}}
           iconPosition="left"
           placeholder="Search..."
         />
@@ -82,38 +82,9 @@ class Home extends React.Component {
           {this.renderPosts()}
         </CardDeck>
       </Card>
-
-          {/* <Grid columns={3}>
-            <Grid.Row style={styles.test} columns={3}>
-
-              {this.renderPosts()}
-            </Grid.Row>
-
-          </Grid> */}
-        
       </>
     );
   };
 };
-
-// const styles = {
-//   container: {
-//     display: "flex",
-//     flexDirection: "row",
-//     alignItems: "center",
-//     marginTop: "50px",
-//     // height: "50px",
-//     // width: "500px"
-//   },
-//   test: {
-//     display: 'flex',
-//     flexDirection: 'row',
-//     justifyContent: 'space-evenly'
-//   },
-//   testTwo: {
-//     border: "solid 2px blue",
-//   }
-// }
-
 
 export default Home;

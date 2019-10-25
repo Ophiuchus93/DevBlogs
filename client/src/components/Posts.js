@@ -1,19 +1,15 @@
 import React from "react";
 import axios from "axios";
-import Post from "./Post"
+import PostDropDown from "./PostDropDown"
 import { AuthContext } from "../providers/AuthProvider";
 import { Input, } from "semantic-ui-react";
 import { Card, CardDeck } from "react-bootstrap"
-// import "../App.css";
-
 
 class Posts extends React.Component {
   state = { posts: [], search: "" };
 
   componentDidMount() {
     axios.get(`/api/posts`)
-
-
       .then(res => {
         this.setState({ posts: res.data });
       })
@@ -45,7 +41,7 @@ class Posts extends React.Component {
     if (posts.length <= 0)
       return <h2>Currently no posts...</h2>
     return filteredPosts.map(post =>
-      <Post
+      <PostDropDown
         key={post.id}
         {...post}
         currentUser
@@ -64,7 +60,7 @@ class Posts extends React.Component {
           value={this.state.search}
           onChange={this.updateSearch.bind(this)}
           icon={{ name: "search" }}
-          style={{ width: "400px" }}
+          style={{ width: "400px", color: "indigo" }}
           iconPosition="left"
           placeholder="Search..."
           
@@ -84,6 +80,3 @@ class Posts extends React.Component {
 
 Posts.contextType = AuthContext;
 export default Posts;
-
-
-

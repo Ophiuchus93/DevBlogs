@@ -1,7 +1,5 @@
 class Api::PostsController < ApplicationController
-  # include DeviseTokenAuth::Concerns::SetUserByToken
   before_action :authenticate_user!, only: [:show, :update, :destroy, :create]
-  # before_action :set_user, only: [:index]
   before_action :set_post, only: [:show, :update, :destroy]
 
   def index
@@ -20,8 +18,6 @@ class Api::PostsController < ApplicationController
       begin
         cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
         post.image = cloud_image["secure_url"]
-        # rescue => e
-        #   render json: { errors: e}, status: 422
       end
     end
 

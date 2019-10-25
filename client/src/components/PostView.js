@@ -3,11 +3,10 @@ import CommentForm from "./CommentForm";
 import Comment from "./Comment";
 import Like from "./Like";
 import axios from "axios";
-// import { Container, Segment, Header, Image, } from "semantic-ui-react";
-import { Card, Container,  } from "react-bootstrap";
+import { Card, Container, } from "react-bootstrap";
 
 class PostView extends React.Component {
-  state = { post: {}, comments: [], }
+  state = { post: {}, comments: [], };
 
   componentDidMount() {
     axios.get(`/posts/${this.props.match.params.id}`)
@@ -21,7 +20,7 @@ class PostView extends React.Component {
         this.setState({ comments: res.data })
       })
       .catch(err => console.log(err))
-  }
+  };
 
   renderComments = (props) => {
     const { comments } = this.state;
@@ -29,7 +28,7 @@ class PostView extends React.Component {
       return <h3>No Comments</h3>
     return comments.map(comment =>
       <Comment key={comment.id} body={comment.body} deleteComment={this.deleteComment} comment={comment} />)
-  }
+  };
 
   addComment = (comment) => {
     const { comments } = this.state;
@@ -43,21 +42,7 @@ class PostView extends React.Component {
       .then(res => {
         this.setState({ comments: comments.filter(c => c.id !== id), })
       })
-  }
-
-
-  //   sample = () => {
-  //     const { posts, } = this.state;
-  //   if (posts.length) {
-  //     const index = Math.floor(Math.random() * posts.length);
-  //     return posts[index];
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
-
-
+  };
 
   render() {
     const { title, body, image } = this.state.post;
@@ -65,57 +50,25 @@ class PostView extends React.Component {
 
       <Container>
         <Card bg="light" >
-        <Card.Img src={image} style={styles.image} />
-        <Card.Body>
-          <Card.Title as="h3" className="text-center">{title}</Card.Title>
-          <hr />
-          <Card.Text>{body}</Card.Text>
-        </Card.Body>
-        <Card.Footer bg="light">
+          <Card.Img src={image} style={styles.image} />
+          <Card.Body>
+            <Card.Title as="h3" className="text-center">{title}</Card.Title>
+            <hr />
+            <Card.Text>{body}</Card.Text>
+          </Card.Body>
+          <Card.Footer bg="light">
 
-        <Like />
-        <br />
-        <CommentForm {...this.props} addComment={this.addComment} />
-        </Card.Footer>
+            <Like />
+            <br />
+            <CommentForm {...this.props} addComment={this.addComment} />
+          </Card.Footer>
         </Card>
         <br />
         <br />
-          <Card.Title as="h4">Comments:</Card.Title>
+        <Card.Title as="h4">Comments:</Card.Title>
 
-    {this.renderComments()}
+        {this.renderComments()}
       </Container>
-        
-
-     
-
-
-      // <div>
-      // //   <Segment>
-      // //     <div style={styles.image} >
-      // //       <Image src={image} />
-      // //     </div>
-      // //     <Header as="h1" textAlign="center"> {title} </Header>
-      // //     <hr />
-      // //     <br />
-      // //     <Container>
-      // //       <Segment>
-      // //         <p> {body} </p>
-      // //       </Segment>
-      // //     </Container>
-      // //     <br />
-      // //     <br />
-      // //     <br />
-      // //       <Like />
-      // //     <br />
-      // //     <CommentForm {...this.props} addComment={this.addComment} />
-      // //     <br />
-      // //     <Header as="h4">Comments:</Header>
-
-      // //     {this.renderComments()}
-
-      // //   </Segment>
-
-      // </div>
     );
   }
 };
@@ -141,6 +94,6 @@ const styles = {
     height: "400px",
     width: "800px",
   }
-}
+};
 
 export default PostView;

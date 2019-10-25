@@ -1,3 +1,6 @@
 .ui.icon.input>input:focus {
   border-color: rgba(34,36,38,.15);
  }
+ /* .ui.input>input { 
+  background-color: rgba(251, 249, 249,.1);
+ } */

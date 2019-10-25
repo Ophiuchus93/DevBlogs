@@ -1,23 +1,26 @@
 import React from "react";
-  class Like extends React.Component {
-state = {
-     likes: 0
-    };
+class Like extends React.Component {
+  state = {
+    likes: 0
+  };
 
-   incrementMe = () => {
+  incrementMe = () => {
     let newCount = this.state.likes + 1
     this.setState({
-       likes: newCount
-     })
-   }
+      likes: newCount
+    })
+  };
 
   render() {
-   return (
-     <div>
-      <button onClick={this.incrementMe}><span role="img" aria-label="heart">❤️</span> {this.state.likes} </button>
-     </div>
+    return (
+      <div>
+        <button onClick={this.incrementMe}>
+          <span role="img" aria-label="heart">❤️</span>
+          {this.state.likes}
+        </button>
+      </div>
     )
-   }
-} 
+  }
+};
 
 export default Like;
