@@ -47,6 +47,8 @@ class Posts extends React.Component {
         currentUser
         deletePost={this.deletePost}
       />
+     
+    
     )
   };
 
@@ -61,6 +63,7 @@ class Posts extends React.Component {
           style={{ width: "400px", color: "indigo" }}
           iconPosition="left"
           placeholder="Search..."
+          
         /> 
         <br />
         <br />

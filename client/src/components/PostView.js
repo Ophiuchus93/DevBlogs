@@ -73,6 +73,17 @@ class PostView extends React.Component {
   }
 };
 
+// const styles = {
+//   image: {
+//     display: "flex",
+//     // border: "solid 2px blue",
+//     flexDirection: "column",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     padding: "2em",
+//   }
+// }
+
 const styles = {
 
   image: {
