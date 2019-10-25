@@ -3,7 +3,7 @@ import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from "semantic-ui-react"
 
 class Register extends React.Component {
-  state = { firstName: "",lastName:"", userName: "", cohort: "", email: "", password: "", passwordConfirmation: "", };
+  state = { firstName: "", lastName:"", userName: "", cohort: "", email: "", password: "", passwordConfirmation: "", };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -17,12 +17,12 @@ class Register extends React.Component {
       handleRegister({ firstName, lastName, userName, cohort, email, password, passwordConfirmation, }, history);
     else
       alert("Passwords Do Not Match")
-  }
+  };
 
   handleChange = (e) => {
     const { name, value, } =e.target;
     this.setState({ [name]: value, });
-  }
+  };
 
   render() {
     const { firstName, lastName, userName, cohort, email, password, passwordConfirmation, } = this.state;
@@ -96,7 +96,7 @@ class Register extends React.Component {
       </Segment>
     )
   }
-}
+};
 
 export default class ConnectedRegister extends React.Component {
   render() {
@@ -106,4 +106,4 @@ export default class ConnectedRegister extends React.Component {
       </AuthConsumer>
     )
   }
-}
+};

@@ -2,30 +2,25 @@ import React from 'react'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Button, Container, Image, Menu, Header, Dropdown, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
-import Avatar from "./Avatar";
 import Beaker from "../images/Beaker.png";
 import User from "../images/User.png";
-import DropdownImage from "./DropdownImage";
-
 
 class Navbar extends React.Component {
-  
-
 
   rightNavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
 
     if (user) {
       return (
-        <Menu.Menu position='right'>
+<Menu.Menu position='right'>
           <Menu.Item>
             <Header.Content>
             <Image avatar src={user.image || User }   />
               <Dropdown title="Dropdown">
                 <Dropdown.Menu>
-
-                  {/* <Dropdown.Item href="/events/new" text='Add New Event' icon="add" /> */}
-                  <Dropdown.Item href={`/Profile`} text='Profile' icon="arrow right" />
+                  <Dropdown.Item  href={`/Profile`} text='Profile' icon="user" />
+                  <Dropdown.Item href={`/form`} text='Add Post' icon="edit outline" />
+                  <Dropdown.Item href={`/posts`} text='Post View' icon="desktop" />
                   <Dropdown.Item text='Logout' onClick={() => handleLogout(this.props.history)} icon="log out" />
                 </Dropdown.Menu>
               </Dropdown>
@@ -57,46 +52,32 @@ class Navbar extends React.Component {
          
         </Menu.Menu>
       )
-    }
-  }
+    };
+  };
 
   render() {
     return (
-      <Container>
-        <Menu pointing secondary>
+        <Menu pointing secondary >
           <Link to="/">
             <Image style={{width: "65px", height: "75px", paddingTop: "8px",}} src={Beaker} />
           </Link>
-          <Link to='/posts'>
-            <Menu.Item
-              name='posts'
-              id='posts'
-              active={this.props.location.pathname === '/posts'}
-            />
-          </Link>
-          <Link to='/form'>
-            <Menu.Item
-              name='Add Post'
-              id='add post'
-              active={this.props.location.pathname === '/form'}
-            />
-          </Link>
             { this.rightNavItems() }
-        </Menu>
-      </Container>
+          </Menu>
     )
-  }
-}
+  };
+};
+
 export class ConnectedNavbar extends React.Component {
   render() {
     return (
-      <AuthConsumer> 
-        { auth => 
-          <Navbar { ...this.props } auth={auth} />
+      <AuthConsumer>
+        {auth =>
+          <Navbar {...this.props} auth={auth} />
         }
-        
+
       </AuthConsumer>
     )
   }
-}
+};
+
 export default withRouter(ConnectedNavbar);

@@ -1,37 +1,31 @@
 import React from 'react';
-import { Card, } from 'semantic-ui-react';
+import { Card, } from "react-bootstrap";
 import { Link, } from "react-router-dom";
-import { AuthConsumer, } from "../providers/AuthProvider";
-// import axios from "axios"
-
+import Like from "./Like";
 
 class Comment extends React.Component {
-  state = { body: ""};
-
-
-
+  state = { body: "" };
 
   render() {
     const { body } = this.props;
     return (
-
-
-      <Card style={styles.comments}>
-        <Card.Content> {body} </Card.Content>
+      <Card style={styles.comments} padding="20px">
+        <Card.Body>{body}</Card.Body>
+        <Like />
+        <br />
         <Link onClick={() => this.props.deleteComment(this.props.comment.id)}>
           Delete
         </Link>
       </Card>
-
     )
   }
-}
-
+};
 
 const styles = {
 
   comments: {
     background: "#f2f2f2",
   }
-}
+};
+
 export default Comment;

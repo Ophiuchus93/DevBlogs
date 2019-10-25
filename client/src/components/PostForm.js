@@ -17,14 +17,15 @@ class PostForm extends React.Component {
         console.log(err)
       })
     }
-  }
+  };
+
   handleDrop = (files) => {
     this.setState({ file: files[0], });
   };
 
   handleChange = (e, {name, value}) => {
     this.setState({[name]: value})
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +35,6 @@ class PostForm extends React.Component {
     data.append('body', this.state.body);
 
     if (this.props.match.params.id) {   
-      // debugger   
       axios.put(`/api/posts/${this.props.match.params.id}`, 
       data)
       .then(res => {
@@ -52,7 +52,7 @@ class PostForm extends React.Component {
         console.log(err)
       })
     }
-  }
+  };
  
   render() {
     const { title, body, } = this.state;

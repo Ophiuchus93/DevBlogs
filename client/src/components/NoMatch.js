@@ -14,10 +14,10 @@ const NoMatch = () => (
       <span role="img" aria-label="t-rex">🦖</span>
       <span role="img" aria-label="sauropod">🦕</span>
       <span role="img" aria-label="exploding_head">🤯</span>
-     <br />
-     <Link to="/">Home</Link>
+      <br />
+      <Link to="/">Home</Link>
     </Header>
   </>
-)
+);
 
 export default NoMatch;

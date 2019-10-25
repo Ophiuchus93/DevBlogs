@@ -2,9 +2,7 @@ import React from "react";
 import { AuthConsumer, } from "../providers/AuthProvider";
 import Dropzone from "react-dropzone";
 import { Container, Form, Grid, Image, Header, Button, } from "semantic-ui-react";
-
 const defaultImage = 'https://react.semantic-ui.com/images/avatar/large/matthew.png';
-
 class Profile extends React.Component {
   state = { editing: false, formValues: { firstName: "", lastName: "", email: "", file: "", }, };
   componentDidMount() {
@@ -22,15 +20,12 @@ class Profile extends React.Component {
           <Image src={user.image || defaultImage} />
         </Grid.Column>
         <Grid.Column width={8}>
-          <Header as="h1">{ user.firstName } { user.lastName }</Header>
-          <Header as="h4">{ user.email }</Header>
+          <Header as="h1">{user.firstName} {user.lastName}</Header>
+          <Header as="h4">{user.email}</Header>
         </Grid.Column>
       </>
     );
   };
-  // handleChange = (e, { firstName, lastName, value, }) => {
-  //   this.setState({ formValues: { ...this.state.formValues, [firstName]: firstName, lastName, value, }, });
-  // };
   handleChange = (e) => {
     const { name, value, } = e.target;
     this.setState({
@@ -39,20 +34,7 @@ class Profile extends React.Component {
         [name]: value,
       }
     })
-  }
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const { formValues: { name, email, file, }, } = this.state;
-  //   const { auth: { user, updateUser, }, } = this.props;
-  //   updateUser(user.id, { name, email, file, });
-  //   this.setState({
-  //     editing: false,
-  //     formValues: {
-  //       ...this.state.formValues,
-  //       file: "",
-  //     },
-  //   });
-  // }
+  };
   handleSubmit = (e) => {
     e.preventDefault();
     const { formValues: { firstName, lastName, email, file, }, } = this.state;
@@ -72,38 +54,38 @@ class Profile extends React.Component {
             onDrop={this.handleDrop}
             multiple={false}
           >
-            { ({ getRootProps, getInputProps, isDragActive, }) => ( 
+            {({ getRootProps, getInputProps, isDragActive, }) => (
               <div
                 {...getRootProps()}
                 style={styles.dropzone}
               >
                 <input {...getInputProps()} />
                 {
-                  isDragActive ? 
+                  isDragActive ?
                     <p>Drop files here...</p>
-                  :
+                    :
                     <p>Try dropping a file here, or click to select a file</p>
                 }
               </div>
             )}
-          </Dropzone>         
+          </Dropzone>
         </Grid.Column>
         <Grid.Column width={8}>
-          <Form.Input 
+          <Form.Input
             label="First Name"
             name="firstName"
             value={firstName}
             required
             onChange={this.handleChange}
           />
-          <Form.Input 
+          <Form.Input
             label="Last Name"
             name="lastName"
             value={lastName}
             required
             onChange={this.handleChange}
           />
-          <Form.Input 
+          <Form.Input
             label="Email"
             name="email"
             type="email"
@@ -116,17 +98,16 @@ class Profile extends React.Component {
       </Form>
     );
   };
- 
   render() {
     const { editing, } = this.state;
-    return(
+    return (
       <Container>
         <Grid>
           <Grid.Row>
-            { editing ? this.editView() : this.profileView() }
+            {editing ? this.editView() : this.profileView()}
             <Grid.Column>
               <Button onClick={this.toggleEdit}>
-                { editing ? "Cancel" : "Edit" }
+                {editing ? "Cancel" : "Edit"}
               </Button>
             </Grid.Column>
           </Grid.Row>
@@ -137,7 +118,7 @@ class Profile extends React.Component {
 };
 const ConnectedProfile = (props) => (
   <AuthConsumer>
-    { auth => 
+    {auth =>
       <Profile {...props} auth={auth} />
     }
   </AuthConsumer>
